@@ -1,0 +1,15 @@
+<?php
+
+$MESS['EMPLOYEES_COMPANY_BRANCH_HEAD'] = 'Руководитель проекта';
+$MESS['EMPLOYEES_COMPANY_BRANCH_ABOUT'] = 'О проекте';
+$MESS['EMPLOYEES_COMPANY_BRANCH_CONTACTS'] = 'Контакты';
+$MESS['EMPLOYEES_COMPANY_BRANCH_PHONE'] = 'Телефон:';
+$MESS['EMPLOYEES_COMPANY_BRANCH_EMAIL'] = 'Электронная почта:';
+$MESS['EMPLOYEES_COMPANY_BRANCH_ADDRESS'] = 'Почтовый и фактический адрес:';
+$MESS['EMPLOYEES_COMPANY_BRANCH_WORK_TIME'] = 'Время работы:';
+$MESS['EMPLOYEES_COMPANY_BRANCH_PHONE_LIST'] = 'Телефонный справочник';
+$MESS['EMPLOYEES_COMPANY_BRANCH_LEADERS'] = 'Лидеры направлений';
+$MESS['EMPLOYEES_COMPANY_BRANCH_POSTER'] = 'Афиша';
+$MESS['EMPLOYEES_COMPANY_BRANCH_NEWS'] = 'Новости подразделения';
+$MESS['EMPLOYEES_COMPANY_BRANCH_BUSINESS'] = 'Бизнес подразделения';
+$MESS['EMPLOYEES_COMPANY_BRANCH_REQUISITES'] = 'Реквизиты';

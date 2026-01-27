@@ -1,0 +1,60 @@
+:root {
+    --tgm-main: #FF1E2D;
+    --tgm-main-hover: #FF4854;
+    --tgm-main-active: #FF4854;
+
+    --c-ui-field-border-color-focus: #000000;
+}
+
+body:has(.log-main-table) {
+    background: var(--tgm-main);
+}
+
+table.log-main-table {
+    background: none;
+}
+
+.log-top-cell .main-logo.main-logo-ru {
+    -webkit-mask: none;
+    background-image: url(/local/templates/k-team/img/logo.svg);
+    background-color: unset;
+    width: 295px;
+}
+
+.kt-quick-link {
+    background-image: none !important;
+}
+
+.q-img.kt-quick-link__icon {
+    border-radius: 0;
+}
+
+.kt-quick-link .q-img__image.q-img__image--loaded {
+    object-fit: contain !important;
+}
+
+.kt-birthday-gift-list .kt-birthday-gift.is-selected {
+    background-image: url("/local/templates/k-team/img/selected-icon.svg");
+}
+
+.kt-birthday-gift-list .kt-birthday-gift.is-selected .kt-btn {
+    --kt-btn-border-color: var(--tgm-main);
+}
+
+.kt-birthday-gift-list .kt-birthday-gift .kt-btn {
+    --kt-btn-border-color-hover: var(--tgm-main);
+    --kt-btn-border-color-active: var(--tgm-main);
+}
+
+.help-block .help-block-icon:before {
+    background: #FFFFFF;
+}
+
+.menu-structure .menu-item-icon {
+    -webkit-mask-image: url('/local/templates/k-team/img/tree-structure.svg');
+}
+
+
+.bx-user-officelink .ui-btn {
+    text-transform: none;
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f0a0ee50-37ae-420f-b7f5-adc80041ce38" name="anoProd">
+        <fileTransfer accessType="SFTP" host="skdpu.passport.local" port="22" sshConfigId="11202ede-6e1e-4ab9-952e-81ee026b2f5a" sshConfig="sokolovav26@skdpu.passport.local:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
