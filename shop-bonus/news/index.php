@@ -3,7 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Новости");
 ?><?$APPLICATION->IncludeComponent("bitrix:news", "bootstrap_v4", array(
 	"IBLOCK_TYPE" => "news",
-	"IBLOCK_ID" => "39",
+	"IBLOCK_ID" => "41",
 	"TEMPLATE_THEME" => "site",
 	"NEWS_COUNT" => "10",
 	"USE_SEARCH" => "N",

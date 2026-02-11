@@ -68,18 +68,18 @@ endif;
 </div>
 
 <div class="mb-5">
-	<?$APPLICATION->IncludeComponent(
-		"bitrix:main.include",
-		"",
-		Array(
-			"AREA_FILE_SHOW" => "file",
-			"PATH" => SITE_DIR."include/about.php",
-			"AREA_FILE_RECURSIVE" => "N",
-			"EDIT_MODE" => "html",
-		),
-		false,
-		Array('HIDE_ICONS' => 'N')
-	);?>
+	<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array(
+	"AREA_FILE_SHOW" => "file",
+		"PATH" => SITE_DIR."include/about.php",
+		"AREA_FILE_RECURSIVE" => "N",
+		"EDIT_MODE" => "html"
+	),
+	false,
+	array(
+	"HIDE_ICONS" => "N",
+		"ACTIVE_COMPONENT" => "N"
+	)
+);?>
 </div>
 
 <div class="mb-5">

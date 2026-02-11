@@ -1,1 +1,1 @@
-<img src="/shop-bonus/include/logo_mobile.png"  srcset="/shop-bonus/include/logo_mobile_retina.png" />
+<img src="/shop-bonus/include/logo_mobile1.png"  srcset="/shop-bonus/include/logo_mobile_retina1.png" />
