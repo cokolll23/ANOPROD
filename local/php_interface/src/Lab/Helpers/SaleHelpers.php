@@ -10,8 +10,6 @@ use Bitrix\Main\Entity;
 Loader::includeModule('sale');
 
 
-Loader::includeModule('sale');
-
 class SaleHelpers
 {
     /**
@@ -87,5 +85,27 @@ class SaleHelpers
         }
         return $TotalPrice;
     }
+    /**
+     * получить заказы(Стоимость всех) с ид N(Принят) , DF(Отгружен)  F  (выполнен) и   по id  пользователя
+     * @throws SystemException
+     */
+    public static function getPriceOrdersByUserId($user_id,$CANCELED = 'N')
+    {
+        Loader::includeModule('sale');
 
+        $orders = Order::getList([
+            'filter' => [
+                'USER_ID' => $user_id,
+                'CANCELED' => $CANCELED, // если нужно исключить отмененные
+            ],
+            'select' => ['ID', 'PRICE', 'CURRENCY']
+        ]);
+
+        while ($order = $orders->fetch()) {
+            $totalSum += $order['PRICE'];
+        }
+
+        return $totalSum;
+
+    }
 }

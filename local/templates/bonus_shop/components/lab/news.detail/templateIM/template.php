@@ -24,24 +24,28 @@ $this->setFrameMode(true);
 
     <?
     foreach ($arResult["DISPLAY_PROPERTIES"] as $pid => $arProperty):?>
-        <? if ($pid === 'COLUMN33'): ?>
-            <div class="item i-<?= $pid ?>">
-           <span style="font-weight: bold; font-size: 120%"> <?= $arProperty["NAME"] ?>:&nbsp;
-            <?= $arProperty["DISPLAY_VALUE"]; ?>
-               </span>
-            </div>
-        <? else: ?>
-            <div class="item i-<?= $pid ?>">
-           <span> <?= $arProperty["NAME"] ?>:&nbsp;
-            <?= $arProperty["DISPLAY_VALUE"]; ?>
-               </span>
-            </div>
-
+        <? if ($pid != 'COLUMN33' && $pid != 'COLUMN34'): ?>
+            <?
+            $arPropsNew[] = $arProperty;
+            ?>
         <? endif; ?>
-        <br/>
     <?endforeach;
-
-
+    foreach ($arPropsNew as $arProperty) {
+        ?>
+        <div>
+        <span>
+            <?= $arProperty["NAME"] ?>:&nbsp;
+            <?= $arProperty["DISPLAY_VALUE"]; ?>
+               </span>
+        </div>
+    <?php } ?>
+    <br>
+    <div class="item i-<?= $pid ?>">
+           <span style="font-weight: bold; font-size: 120%"> <?= $arResult["DISPLAY_PROPERTIES"]['COLUMN33']["NAME"] ?> доступно :&nbsp;
+            <?= $arResult["DISPLAY_PROPERTIES"]['COLUMN33']['DISPLAY_VALUE']; ?> М-баллов.
+               </span>
+    </div>
+    <?
     if (\Lab\Helpers\SaleHelpers::getCurrentUserPriceOrders() > 0) {
         $ordersPrice = \Lab\Helpers\SaleHelpers::getCurrentUserPriceOrders();
     } else {

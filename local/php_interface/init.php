@@ -16,6 +16,7 @@ if (file_exists(__DIR__ . '/includes/pretty-print/pretty_print.php')) {
 use Lab\EventsHandlers\IblockEventsHandlers as EH;
 use Lab\Helpers\IblockHelpers as IH;
 use \Lab\Helpers\UsersHelpers as UH;
+use Lab\Helpers\RecalculateScores as RS;
 
 //\Bitrix\Main\UI\Extension::load('lab.mainjs'); , BaryshevaAD1@mos.ru, StarenkoOG@mos.ru, PORT-communications@mos.ru
 //CUtil::InitJSCore(array('jquery3', 'popup', 'ajax', 'date'));
@@ -118,13 +119,15 @@ function OnSaleOrderSavedHandler(\Bitrix\Main\Event $event)
         $arPrices = [$COLUMN33_Value, $customerProperties['PRICE'], $COLUMN33_ValueNew];
 
         // Устанавливаем значение свойства
-        \CIBlockElement::SetPropertyValuesEx(
+        /*\CIBlockElement::SetPropertyValuesEx(
             $elementId,
             $iblockId,
             array(
-                "COLUMN33" => $COLUMN33_ValueNew
+                "COLUMN33" => $COLUMN33_ValueNew,
+                "COLUMN34" => $elementPropColumn34Val
             )
-        );
+        );*/
+        RS::getTotalScores('sotrudniki',  $elementCode ) ;
 
         /*$log = date('Y-m-d H:i:s') . ' onStatusChange' . print_r($propsNotZero, true);
         file_put_contents(__DIR__ . '/log.txt', $log . PHP_EOL, FILE_APPEND);
