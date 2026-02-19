@@ -143,9 +143,9 @@ class IblockEventsHandlers
 
         if ($IBLOCK_CODE === 'interlabs.feedbackform') { // Из формы Написать администратору
 
-            $to = $adminEmail = 'cavjob@ya.ru';
+            $to = $adminEmail = 'cavjob@ya.ru,kireevads@mos.ru';
 
-            $hrefToEditionElementInIB = "https://{$domain}/bitrix/admin/iblock_element_edit.php?IBLOCK_ID={$IBLOCK_ID}&type=feedbackmsgs&lang=ru&ID={$elID}&find_section_section=0&WF=Y";
+            $hrefToEditionElementInIB = "https://corp-portal.welcome.moscow/bitrix/admin/iblock_element_edit.php?IBLOCK_ID={$IBLOCK_ID}&type=feedbackmsgs&lang=ru&ID={$elID}&find_section_section=0&WF=Y";
 
 
             $iblockName = \CIBlock::GetByID($IBLOCK_ID)->Fetch()['NAME'];
@@ -153,20 +153,14 @@ class IblockEventsHandlers
             $subject = "=?UTF-8?B?" . base64_encode("Магазин бонусов форма Написать администратору") . "?=";
 
             $message = <<<HTML
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Пример письма</title>
-</head>
-<body>
-<p class='highlight'>Письмо от {$arFields['NAME']} </p>
-<p class='highlight'>Телефон: {$arFields ['PROPERTY_VALUES']['PHONE']} </p>
-<p class='highlight'>EMAIL: {$arFields['PROPERTY_VALUES']['EMAIL']} </p>
-<p class='highlight'>Сообщение: {$arFields['PROPERTY_VALUES']['MESSAGE']} </p>
-<a href="{$hrefToEditionElementInIB}">В сообщение</a>
+
+Письмо от {$arFields['NAME']} 
+Телефон: {$arFields ['PROPERTY_VALUES']['PHONE']} 
+EMAIL: {$arFields['PROPERTY_VALUES']['EMAIL']} 
+Сообщение: {$arFields['PROPERTY_VALUES']['MESSAGE']} 
+{$hrefToEditionElementInIB}"
     
-</body>
-</html>
+
 HTML;
 
             $headers = [
@@ -176,7 +170,7 @@ HTML;
                 'Reply-To: ответ@example.com',
                 'X-Mailer: PHP/' . phpversion()
             ];
-            if (mail($to, $subject, $message, implode("\r\n", $headers))) {
+            if (mail($to, $subject, $message)) {
                 echo "<h2 style='color: green;'>Письмо отправлено администратору</h2>";
             } else {
                 echo "Ошибка отправки";
@@ -190,9 +184,9 @@ HTML;
             file_put_contents($_SERVER["DOCUMENT_ROOT"] . '/log.txt', $log . PHP_EOL, FILE_APPEND);
             \Bitrix\Main\Diag\Debug::dumpToFile($log, 'interlabs.signscores' . date('d-m-Y; H:i:s'));
 
-            $to = $adminEmail = 'cavjob@ya.ru';
+            $to = $adminEmail = 'cavjob@ya.ru,kireevads@mos.ru';
 
-            $hrefToEditionElementInIB = "https://{$domain}/bitrix/admin/iblock_element_edit.php?IBLOCK_ID={$IBLOCK_ID}&type=feedbackmsgs&lang=ru&ID={$elID}&find_section_section=0&WF=Y";
+            $hrefToEditionElementInIB = "https://corp-portal.welcome.moscow/bitrix/admin/iblock_element_edit.php?IBLOCK_ID={$IBLOCK_ID}&type=feedbackmsgs&lang=ru&ID={$elID}&find_section_section=0&WF=Y";
 
 
             $iblockName = \CIBlock::GetByID($IBLOCK_ID)->Fetch()['NAME'];
@@ -202,22 +196,15 @@ HTML;
              [EVENT_NAME] => Проведение семинара/вебинара/экскурсии/мастер-классадля сотрудников (детей сотрудников) 20 б
              [SCORES_QTT] => 10*/
             $message = <<<HTML
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Пример письма</title>
-</head>
-<body>
-<p class='highlight'>Письмо от {$arFields['NAME']} </p>
-<p class='highlight'>Телефон: {$arFields ['PROPERTY_VALUES']['PHONE']} </p>
-<p class='highlight'>EMAIL: {$arFields['PROPERTY_VALUES']['EMAIL']} </p>
-<p class='highlight'>Количество М-баллов: {$arFields['PROPERTY_VALUES']['SCORES_QTT']} </p>
-<p class='highlight'>Название мероприятия: {$arFields['PROPERTY_VALUES']['EVENT_NAME']} </p>
-<p class='highlight'>Код мероприятия: {$arFields['PROPERTY_VALUES']['EVENT_CODE']} </p>
-<a href="{$hrefToEditionElementInIB}">В сообщение {$hrefToEditionElementInIB}</a>
-    
-</body>
-</html>
+
+Письмо от {$arFields['NAME']} 
+Телефон: {$arFields ['PROPERTY_VALUES']['PHONE']} 
+EMAIL: {$arFields['PROPERTY_VALUES']['EMAIL']} 
+Количество М-баллов: {$arFields['PROPERTY_VALUES']['SCORES_QTT']} 
+Название мероприятия: {$arFields['PROPERTY_VALUES']['EVENT_NAME']} 
+Код мероприятия: {$arFields['PROPERTY_VALUES']['EVENT_CODE']} 
+{$hrefToEditionElementInIB}
+
 HTML;
 
             $headers = [
@@ -227,7 +214,7 @@ HTML;
                 'Reply-To: ответ@example.com',
                 'X-Mailer: PHP/' . phpversion()
             ];
-            if (mail($to, $subject, $message, implode("\r\n", $headers))) {
+            if (mail($to, $subject, $message)) {
                 echo "<h2 style='color: green;'>Письмо отправлено администратору</h2>";
             } else {
                 echo "Ошибка отправки";
