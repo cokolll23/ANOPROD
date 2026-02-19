@@ -138,11 +138,6 @@ function OnSaleOrderSavedHandler(\Bitrix\Main\Event $event)
 
 // todo  при Отмене заказа из личного кабинета покупателя изменяет статус на D
 $eventManager->addEventHandler("sale", "OnSaleOrderSaved", ['Lab\EventsHandlers\SaleEventsHandlers','OnSaleOrderSavedHandler1']);
-
-// todo действия при регистрации и удалении пользователя если пользователь из группы K-Team: Сотрудники [12 EMPLOYEES_s1]
-// todo если из АНО
-AddEventHandler("main", "OnAfterUserAdd", ['Lab\EventsHandlers\UserEventsHandlers', 'onAfterUserAddHandler']);
-AddEventHandler("main", "OnAfterUserUpdate", ['Lab\EventsHandlers\UserEventsHandlers', 'onAfterUserUpdateHandler']);
 //todo Отменяем создание заказа до его создания при цена заказа выше определенной цифры https://chat.deepseek.com/a/chat/s/6e829ee6-c90c-46b8-a2f5-dbab70924b95
 AddEventHandler("sale", "OnBeforeOrderAdd", ['Lab\EventsHandlers\SaleEventsHandlers', 'onBeforeOrderAdd']);
 
@@ -151,71 +146,4 @@ AddEventHandler("sale", "OnBeforeOrderAdd", ['Lab\EventsHandlers\SaleEventsHandl
 $eventManager->addEventHandler("iblock", "OnAfterIBlockElementAdd", ['Lab\EventsHandlers\IblockEventsHandlers', 'onAfterIBlockElementAddHandler']);
 // todo сделать хендлер при изменении элемента складывать значения свойств
 $eventManager->addEventHandler("iblock", "OnAfterIBlockElementUpdate", ['Lab\EventsHandlers\IblockEventsHandlers', 'onAfterIBlockElementUpdateHandler']);
-//$eventManager->addEventHandler("iblock", "OnAfterIBlockElementDelete", ['Lab\EventsHandlers\IblockEventsHandlers','onAfterIBlockElementDeleteHandler']);
-$eventManager->addEventHandler("iblock", "OnAfterIBlockElementAdd", 'onAfterIBlockElementAddHandler1');
-function onAfterIBlockElementAddHandler1(&$arFields)
-{
-    // todo отправка писем при добавлении сообщения обратной связи CODE interlabs.feedbackform
-    $IBLOCK_ID = $arFields['IBLOCK_ID'];
-    $IBLOCK_CODE = IH::getIBlockCodeById($IBLOCK_ID);
-
-    if ($IBLOCK_CODE === 'interlabs.feedbackform') {
-
-        /* $log = date('Y-m-d H:i:s') . ' interlabs.feedbackform ' . print_r($arFields, true);
-         file_put_contents(__DIR__ . '/log.txt', $log . PHP_EOL, FILE_APPEND);
-         Bitrix\Main\Diag\Debug::dumpToFile($log, 'interlabs.feedbackform' . date('d-m-Y; H:i:s'));*/
-
-        $adminEmail = 'cavjob@ya.ru';
-        $iblockName = CIBlock::GetByID($IBLOCK_ID)->Fetch()['NAME'];
-
-        $subject = "Добавлен новый элемент в инфоблок «{$iblockName}»";
-
-        $message = "
-             <h3>Новый элемент #{$arFields['ID']}</h3>
-             <p><strong>Название:</strong> {$arFields['NAME']}</p>
-             <p><strong>Дата создания:</strong> " . FormatDate('j F Y H:i') . "</p>
-         ";
-
-        if (!empty($arFields['PREVIEW_TEXT'])) {
-            $message .= "<p><strong>Описание:</strong> {$arFields['PREVIEW_TEXT']}</p>";
-        }
-
-        $message .= "
-             <p>
-                 <a href='/bitrix/admin/iblock_element_edit.php?IBLOCK_ID={$IBLOCK_ID}&type=content&ID={$arFields['ID']}'>
-                     Редактировать элемент
-                 </a>
-             </p>
-         ";
-
-        $to = "cavjob@ya.ru"; // Адрес получателя
-        $subject = "Привет из PHP!"; // Тема письма
-        $message = "Это тестовое письмо, отправленное с помощью функции mail() в PHP."; // Тело письма
-        $headers = "From: sender@example.com\r\n"; // Заголовки
-
-
-
-
-        CEvent::SendImmediate(
-            "WF_NEW_IBLOCK_ELEMENT",
-            SITE_ID,
-            array(
-                "EMAIL_TO" => $adminEmail,
-                "SUBJECT" => $subject,
-                "BODY" => $message,
-            )
-        );
-
-    }
-
-
-}
-
-function
-onAfterIBlockElementDeleteHandler(&$arFields)
-{
-
-    /*$log = date('Y-m-d H:i:s') . ' onAfterIBlockElementDeleteHandler ' . print_r($arFields, true);
-    file_put_contents(__DIR__ . '/log.txt', $log . PHP_EOL, FILE_APPEND);
-    Bitrix\Main\Diag\Debug::dumpToFile($log, 'onAfterIBlockElementDeleteHandler' . date('d-m-Y; H:i:s'));*/
-}
+//$eventManager->addEventHandler("iblock", "OnAfterIBlockElementAdd", ['Lab\EventsHandlers\IblockEventsHandlers', 'onAfterIBlockElementAddHandlerSendMail']);

@@ -26,9 +26,9 @@ class UserEventsHandlers
         if (in_array($gropeId, $arFields['GROUP_ID'])) {
             $userName = $arFields["LAST_NAME"] . ' ' . $arFields["NAME"];
             $res = IblockHelpers::addElsToIblock('sotrudniki', $userId, $userName, $arFields["EMAIL"], 'ano', 's2');
-           /* $log = date('Y-m-d H:i:s') . ' OnAfterUserAddHandler ' . print_r($arFields, true);
-            file_put_contents(__DIR__ . '/log.txt', $log . PHP_EOL, FILE_APPEND);
-            \Bitrix\Main\Diag\Debug::dumpToFile($log , 'OnAfterUserAddHandler' . date('d-m-Y; H:i:s'));*/
+            $log = date('Y-m-d H:i:s') . ' OnAfterUserAddHandler ' . print_r($arFields, true);
+            file_put_contents($_SERVER["DOCUMENT_ROOT"] . '/log.txt', $log . PHP_EOL, FILE_APPEND);
+            /* \Bitrix\Main\Diag\Debug::dumpToFile($log , 'OnAfterUserAddHandler' . date('d-m-Y; H:i:s'));*/
         };
     }
 
