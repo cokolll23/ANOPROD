@@ -9,6 +9,7 @@ use Bitrix\Iblock\SectionTable;
 use Bitrix\Iblock\ElementTable;
 use Bitrix\Main\Loader;
 use Lab\Helpers\UsersHelpers as UH;
+use Bitrix\Iblock\PropertyEnumerationTable;
 
 ;
 
@@ -270,5 +271,48 @@ class IblockHelpers
             ]
         )->GetNext();
         return $arElVal;
+    }
+
+    /**
+     * получить значение  свойства по его Коду
+     */
+    public static function getPropertyValueByElementCode($elementCode, $propertyCode = 'COLUMN34')
+    {
+        // $elementCode Email user
+
+        $res = \CIBlockElement::GetList(
+            [],
+            [
+                'CODE' => $elementCode,
+                'ACTIVE' => 'Y',
+            ],
+            false,
+            false,
+            [
+                'ID',
+                'NAME',
+                'PROPERTY_' . $propertyCode,
+            ]
+        );
+
+        if ($arElement = $res->Fetch()) {
+            $PropertyValue = $arElement['PROPERTY_' . $propertyCode . '_VALUE'];
+
+        }
+        return $PropertyValue;
+    }
+
+    /** Получить внешний код значения свойства типа список
+     *
+     */
+    public static function getXML_IDValPropertyById($enumId)
+    {
+        $result = PropertyEnumerationTable::getList([
+            'select' => ['ID', 'XML_ID'],
+            'filter' => ['=ID' => $enumId]
+        ]);
+        if ($item = $result->fetch()) {
+            return $item['XML_ID'];
+        }
     }
 }

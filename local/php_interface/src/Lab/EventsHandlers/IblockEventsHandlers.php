@@ -5,6 +5,8 @@ namespace Lab\EventsHandlers;
 use Lab\Helpers\IblockHelpers as IblockHelpers;
 use Lab\Helpers\IblockHelpers as IH;
 use Lab\Helpers\RecalculateScores as RS;
+use Bitrix\Iblock\PropertyEnumerationTable;
+use Lab\Helpers\UsersHelpers as UH;
 
 class IblockEventsHandlers
 {
@@ -143,7 +145,7 @@ class IblockEventsHandlers
 
         if ($IBLOCK_CODE === 'interlabs.feedbackform') { // Из формы Написать администратору
 
-            $to = $adminEmail = 'cavjob@ya.ru,kireevads@mos.ru';
+            $to = $adminEmail = 'cavjob@ya.ru,sobolevaya3@mos.ru';
 
             $hrefToEditionElementInIB = "https://corp-portal.welcome.moscow/bitrix/admin/iblock_element_edit.php?IBLOCK_ID={$IBLOCK_ID}&type=feedbackmsgs&lang=ru&ID={$elID}&find_section_section=0&WF=Y";
 
@@ -180,11 +182,7 @@ HTML;
         if ($IBLOCK_CODE === 'interlabs.signscores') { // Из формы Написать администратору
 
 
-            $log = date('Y-m-d H:i:s') . ' interlabs.signscores ' . print_r($arFields, true);
-            file_put_contents($_SERVER["DOCUMENT_ROOT"] . '/log.txt', $log . PHP_EOL, FILE_APPEND);
-            \Bitrix\Main\Diag\Debug::dumpToFile($log, 'interlabs.signscores' . date('d-m-Y; H:i:s'));
-
-            $to = $adminEmail = 'cavjob@ya.ru,kireevads@mos.ru';
+            $to = $adminEmail = 'cavjob@ya.ru,sobolevaya3@mos.ru';
 
             $hrefToEditionElementInIB = "https://corp-portal.welcome.moscow/bitrix/admin/iblock_element_edit.php?IBLOCK_ID={$IBLOCK_ID}&type=feedbackmsgs&lang=ru&ID={$elID}&find_section_section=0&WF=Y";
 
@@ -221,5 +219,77 @@ HTML;
             }
 
         }
+    }
+
+    /**
+     * событие добавления элемента в ib  История состояний IBLOCK_CODE => 'state_history'
+     *  FIRED => Уволен ACCEPTED => Принят
+     * @param $arFields
+     * @return void
+     * 25 FIRED => Уволен   23 ACCEPTED => Принят
+     * [PROPERTY_VALUES] => Array
+     * (
+     * [USER] => 689
+     * [DEPARTMENT] => Array
+     * (
+     * [0] => 151
+     * )
+     *
+     * [POST] =>
+     * [STATE] => 23
+     * )
+     */
+    public static function onAfterIBlockElementAddHandlerStateHistoryIB(&$arFields)
+    {
+        $IBLOCK_CODE_state_history = IblockHelpers::getIBlockCodeById($arFields['IBLOCK_ID']);
+
+        if ($IBLOCK_CODE_state_history == 'state_history') {
+
+            $userId = $arFields['PROPERTY_VALUES']['USER'];
+            $arUserInfo = UH::getUserInfoById($userId);
+
+
+            if ($arUserInfo['UF_DEPT'] != '') {
+                $strXML_IDUserFieldEnum = UH::getUserXML_IDById($arUserInfo['UF_DEPT']);
+            } else {
+                $strXML_IDUserFieldEnum = 'ano';
+            }
+
+
+            $intSectionId = IblockHelpers::getGroupIdByCode('sotrudniki', $strXML_IDUserFieldEnum, 's2');
+
+            $userEmail = $arUserInfo['EMAIL'];
+            $FIO = $arUserInfo['LAST_NAME'] . ' ' . $arUserInfo['NAME'] . ' ' . $arUserInfo['SECOND_NAME'];
+
+            $IBLOCK_ID = IblockHelpers::getIblockIdByCode('sotrudniki');
+            $IBLOCK_CODE = IblockHelpers::getIBlockCodeById($IBLOCK_ID);
+
+            $strPropertyIdStateVal = $arFields['PROPERTY_VALUES']['STATE'];
+            $strPropertyCodeStateVal = IblockHelpers::getXML_IDValPropertyById($strPropertyIdStateVal);
+            $blFromAnoCheck = $arFields['PROPERTY_VALUES']['DEPARTMENT'][0] != '' ? 1 : 0;
+
+            $arLog = [
+                'IBLOCK_ID' => $IBLOCK_ID,
+                'IBLOCK_CODE' => $IBLOCK_CODE,
+                'USER_ID' => $userId,
+                'USER_EMAIL' => $userEmail,
+                'USER_FIO' => $FIO,
+                'SECTION_ID' => $intSectionId,
+                'STATE' => $strPropertyCodeStateVal,
+                'DEPARTMENT' => $strPropertyIdStateVal,
+                '$IBLOCK_CODE_state_history' => $IBLOCK_CODE_state_history,
+                '$strXML_IDUserFieldEnum' => $strXML_IDUserFieldEnum,
+                $arUserInfo['$arUserInfo'] => $arUserInfo,
+
+            ];
+
+
+            if ($strPropertyCodeStateVal == 'ACCEPTED') {
+
+                $userNewId = IblockHelpers::addElsToIblock('sotrudniki', $userId, $FIO, $userEmail, $strXML_IDUserFieldEnum, 's2', 'Y');
+            }
+
+        }
+
     }
 }

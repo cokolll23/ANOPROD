@@ -12,6 +12,35 @@ Loader::includeModule('main');
 
 class UsersHelpers
 {
+    /**
+     * Получаем XML_ID Польз. поля пользователя  по его ID
+     */
+    public static function getUserXML_IDById($valueId)
+    {
+        $rsEnum = \CUserFieldEnum::GetList(array(), array("ID" => $valueId));
+        if ($arEnum = $rsEnum->Fetch()) {
+            $xmlId = $arEnum["XML_ID"];
+            //$value = $arEnum["VALUE"]; // Текстовое значение
+            // $id = $arEnum["ID"];       // Его ID (совпадает с переданным)
+
+        }
+        return $xmlId;
+    }
+
+    /**
+     * Получаем инфу пользователя  по его ID
+     */
+    public static function getUserInfoById($userId)
+    {
+        $user = UserTable::getList([
+            'filter' => ['=ID' => $userId],
+            'select' => ['ID', 'NAME', 'LAST_NAME','SECOND_NAME', 'EMAIL', 'UF_*'] // UF_* - все пользовательские поля
+        ])->fetch();
+        if ($user) {
+            return $user;
+        }
+
+    }
 
     /**
      * Получаем ID группы пользователей по ее символьный код группы
@@ -21,6 +50,7 @@ class UsersHelpers
     {
 
     }
+
 
     /**
      * Получаем ID юзера пользователя по его Email
@@ -45,6 +75,7 @@ class UsersHelpers
         }
 
     }
+
 
     /**
      * Получаем ID группы пользователей по ее символьный код группы
@@ -194,6 +225,27 @@ class UsersHelpers
             }
         }
         return $userEmail;
+    }
+
+    // получить true если текущий пользователь входит в опред. группу
+    public static function isCurrentUserGroupCode($STRING_ID):bool
+    {
+        global $USER;
+
+        $groups = \CGroup::GetList(
+            $by = "c_sort",
+            $order = "asc",
+            ["ID" => implode("|", $USER->GetUserGroupArray())]
+        );
+        while ($group = $groups->Fetch()) {
+            $arCurrUserGrps[] = $group["STRING_ID"];
+        }
+        if (in_array($STRING_ID, $arCurrUserGrps)) {
+            $blSTRING_ID = true;
+        } else {
+            $blSTRING_ID = false;
+        }
+        return $blSTRING_ID;
     }
 
 }

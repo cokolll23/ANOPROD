@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="skdpu.passport.local" id="11202ede-6e1e-4ab9-952e-81ee026b2f5a" port="22" nameFormat="DESCRIPTIVE" username="sokolovav26" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" host="10.6.236.80" id="11202ede-6e1e-4ab9-952e-81ee026b2f5a" port="22" nameFormat="DESCRIPTIVE" username="sokolovav26" useOpenSSHConfig="false" />
     </configs>
   </component>
 </project>

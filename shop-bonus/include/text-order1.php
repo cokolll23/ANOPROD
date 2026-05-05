@@ -66,7 +66,7 @@
 <br>
 <br>
 <div class="flex" style="justify-content: center;">
-    <a href="https://disk.yandex.ru/d/EzOAujB8eLesOA" class="button-link">Подробнее</a>
+    <a href="https://disk.yandex.ru/i/joIGxvVR41MSXA" class="button-link">Подробнее</a>
 </div>
 <br>
 <br>

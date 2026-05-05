@@ -190,11 +190,6 @@ class SaleEventsHandlers
 
             }
 
-
-
-            $log = date('Y-m-d H:i:s') . ' onSaleOrderSavedHandler1 ' . print_r($arBasketInfo, true);
-            file_put_contents(__DIR__ . '/log.txt', $log . PHP_EOL, FILE_APPEND);
-            \Bitrix\Main\Diag\Debug::dumpToFile($log, 'onSaleOrderSavedHandler1' . date('d-m-Y; H:i:s'));
         }
 
     }

@@ -6,6 +6,9 @@
 </div><!--end .container.bx-content-section-->
 </div><!--end .workarea-->
 <?
+use Lab\Helpers\IblockHelpers as IH;
+
+$ar = IH::getPropertyValIblockByEmailCurrentUser('sotrudniki', 'COLUMN33');
 $curPage = $APPLICATION->GetCurPage(true);
 if ($curPage == SITE_DIR . "index.php"): ?>
     <? $APPLICATION->IncludeComponent(
@@ -17,7 +20,7 @@ if ($curPage == SITE_DIR . "index.php"): ?>
             ),
             false
     ); ?>
-    <a class="see-balls_wrapp" href=<? SITE_DIR ?>"tablitsa-ballov/">
+    <a class="see-balls_wrapp" href="<?= SITE_DIR ?>detal/?ELEMENT_ID=<?= $ar['ID']; ?>">
         <div class="see-balls">Посмотреть мои баллы
 
             <svg width="50px" height="50px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"

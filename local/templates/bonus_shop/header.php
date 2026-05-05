@@ -86,7 +86,7 @@ $curPage = $APPLICATION->GetCurPage(true);
                 <!--region logo-->
                 <div class="col-lg-6 col-md-6 align-items-center bx-header-logo"
                      style="display: flex;justify-content: center;">
-                    <a class="bx-logo-block d-none d-md-block" href="<?= SITE_DIR ?>">
+                    <a class="bx-logo-block d-none d-md-block" href="/">
                         <? $APPLICATION->IncludeComponent(
                                 "bitrix:main.include",
                                 "",

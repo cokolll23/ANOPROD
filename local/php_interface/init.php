@@ -14,12 +14,17 @@ if (file_exists(__DIR__ . '/includes/pretty-print/pretty_print.php')) {
 
 
 use Lab\EventsHandlers\IblockEventsHandlers as EH;
+use Lab\EventsHandlers\UserEventsHandlers as ueh;
 use Lab\Helpers\IblockHelpers as IH;
 use \Lab\Helpers\UsersHelpers as UH;
 use Lab\Helpers\RecalculateScores as RS;
 
+
 //\Bitrix\Main\UI\Extension::load('lab.mainjs'); , BaryshevaAD1@mos.ru, StarenkoOG@mos.ru, PORT-communications@mos.ru
 //CUtil::InitJSCore(array('jquery3', 'popup', 'ajax', 'date'));
+\Bitrix\Main\UI\Extension::load('lab.functions');
+\Bitrix\Main\UI\Extension::load('lab.popupButton');
+
 $eventManager = \Bitrix\Main\EventManager::getInstance();
 
 if (!CModule::IncludeModule("sale")) {
@@ -144,6 +149,15 @@ AddEventHandler("sale", "OnBeforeOrderAdd", ['Lab\EventsHandlers\SaleEventsHandl
 // todo регистрация пользователя не из АНО после добавления в иб ТАБЛИЦА БОНУСОВ в группу Все покупатели [ 24 CRM_SHOP_BUYER]
 // todo удаление пользователя не из АНО после добавления в иб ТАБЛИЦА БОНУСОВ в группу Все покупатели [ 24 CRM_SHOP_BUYER]
 $eventManager->addEventHandler("iblock", "OnAfterIBlockElementAdd", ['Lab\EventsHandlers\IblockEventsHandlers', 'onAfterIBlockElementAddHandler']);
+// todo если из АНО onAfterIBlockElementAddHandlerStateHistoryIB
+//$eventManager->addEventHandler("iblock", "OnAfterIBlockElementAdd", ['Lab\EventsHandlers\IblockEventsHandlers', 'onAfterIBlockElementAddHandlerStateHistoryIB']);
+
 // todo сделать хендлер при изменении элемента складывать значения свойств
 $eventManager->addEventHandler("iblock", "OnAfterIBlockElementUpdate", ['Lab\EventsHandlers\IblockEventsHandlers', 'onAfterIBlockElementUpdateHandler']);
 $eventManager->addEventHandler("iblock", "OnAfterIBlockElementAdd", ['Lab\EventsHandlers\IblockEventsHandlers', 'onAfterIBlockElementAddHandlerSendMail']);
+
+//$eventManager->addEventHandler("main", "OnAfterUserAdd", ['Lab\EventsHandlers\UserEventsHandlers', 'onAfterUserAddLogs']);
+
+
+/*addEventHandler("main", "OnAfterUserAdd", ['Lab\EventsHandlers\UserEventsHandlers', 'onAfterUserAddLogs']);
+addEventHandler("main", "OnAfterUserUpdate", ['Lab\EventsHandlers\UserEventsHandlers', 'onAfterUserUpdateLogs']);*/
