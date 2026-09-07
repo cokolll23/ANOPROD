@@ -4,6 +4,14 @@ function setApplication()
 {
     include_once 'styles.php';
 }
+AddEventHandler("main", 'OnPageStart', 'addCss');
+function addCss()
+{
+    Bitrix\Main\Page\Asset::getInstance()->addCss( '/bitrix/js/lab/ui/fonts/ony/ui.font.ony.css');
+}
+if (file_exists(__DIR__ . '/includes/pretty_print.php')) {
+    require_once __DIR__ . '/includes/pretty_print.php';
+}
 
 if (file_exists(__DIR__ . '/src/autoloader.php')) {
     require_once __DIR__ . '/src/autoloader.php';
@@ -161,3 +169,9 @@ $eventManager->addEventHandler("iblock", "OnAfterIBlockElementAdd", ['Lab\Events
 
 /*addEventHandler("main", "OnAfterUserAdd", ['Lab\EventsHandlers\UserEventsHandlers', 'onAfterUserAddLogs']);
 addEventHandler("main", "OnAfterUserUpdate", ['Lab\EventsHandlers\UserEventsHandlers', 'onAfterUserUpdateLogs']);*/
+
+// todo логирование Проверить какие данные идут из /upload/1c_intranet
+//     * IB График отсутствий id=1 CODE = "absence" Обработчик события добавления элемента (OnAfterIBlockElementUpdate)
+$eventManager->addEventHandler("iblock", "OnAfterIBlockElementAdd", ['Lab\EventsHandlers\IblockEventsHandlers', 'OnAfterAbsenceAddHandler']);
+// todo логирование Проверить какие данные идут из /upload/1c_intranet  IB График отсутствий id=1 CODE = "absence" Обработчик события обновления элемента (OnAfterIBlockElementUpdate)
+$eventManager->addEventHandler("iblock", "OnAfterIBlockElementUpdate", ['Lab\EventsHandlers\IblockEventsHandlers', 'OnAfterAbsenceUpdateHandler']);

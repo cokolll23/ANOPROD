@@ -1,6 +1,19 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Бенефиты"); ?>
+$APPLICATION->SetTitle("Бенефиты");
+use Lab\Helpers\UsersHelpers as UH;
+?>
+<?php
+$STRING_ID = 'komitet';
+
+echo $blKomitet = UH::isCurrentUserGroupCode($STRING_ID);
+if ($blKomitet) {?>
+    <style>
+        #bx_3218110189_279365,#bx_3218110189_279366,#bx_3218110189_279370{
+            display: none;
+        }
+    </style>
+<?php } ?>
     <div class="benefity">
 
         <? $APPLICATION->IncludeComponent(
@@ -39,7 +52,7 @@ $APPLICATION->SetTitle("Бенефиты"); ?>
                         "DISPLAY_PREVIEW_TEXT" => "N",
                         "DISPLAY_TOP_PAGER" => "N",
                         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                        "IBLOCK_ID" => "50",
+                        "IBLOCK_ID" => "45",
                         "IBLOCK_TYPE" => "benefity",
                         "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
                         "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
@@ -96,23 +109,5 @@ $APPLICATION->SetTitle("Бенефиты"); ?>
                 false
         ); ?>
     </div>
-    <script>
-        BX.ready(function () {
-            var sectionsBlock = $('.sections');
-            var iblockID = <?= $iblockId;?>;
 
-            $.ajax({
-                url: 'ajaxBenefit.php',
-                method: 'post',
-                dataType: 'json',          /* Тип данных в ответе (xml, json, script, html). */
-                data: {iblockID: iblockID,act:'partners_discounts' },
-                success: function (data) {
-                    sectionsBlock.html(data.html);
-                }
-            });
-
-        });
-
-
-    </script>
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

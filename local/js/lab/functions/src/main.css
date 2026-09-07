@@ -1,10 +1,10 @@
 .calendar-event-line-text{
     white-space: normal;
 }
-ul.menu-items li#bx_left_menu_menu_office,.kt-structure{display: none}
-#bx_left_menu_menu_structure,#top_menu_id_company_menu_company{
+ul.menu-items li#bx_left_menu_menu_office{display: none}
+/*#bx_left_menu_menu_structure,#top_menu_id_company_menu_company{
     display: none;
-}
+}*/
 .lab-form [name='web_form_submit']{
     cursor: pointer;
 }
@@ -28,3 +28,26 @@ ul.menu-items li#bx_left_menu_menu_office,.kt-structure{display: none}
     margin: 12px 0 8px 0;
     transition: border 0.2s;
 }
+
+.hidden{display: none}
+
+
+/*.idea-managment-content-right .status-box-l .status-box-r .status-box-m div:nth-of-type(1){
+    left: 375px;
+    position: absolute;
+}
+
+.idea-managment-content-right .status-box-l .status-box-r .status-box-m div:nth-of-type(2){
+    left: 275px;
+    position: absolute;
+}
+.idea-managment-content-right .status-box-l .status-box-r .status-box-m div:nth-of-type(3){
+    left: 65px;
+    position: absolute;
+}*/
+.idea-managment-content-right .status-box-l .status-box-r .status-box-m div:nth-of-type(4){
+    left: 375px;
+    position: absolute;
+}
+div[data-id='166'],div[data-id='159']{display: none}
+#bx_left_menu_menu_company_about{display: none}

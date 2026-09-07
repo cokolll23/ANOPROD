@@ -27,10 +27,10 @@ if ($_POST['action'] == 'getLinkMore') {
         }
 
     }
-    if($link !=''){
+    if ($link != '') {
         $resLink = $link;
         $success = true;
-    }else{
+    } else {
         $resLink = `<h3 style = 'color:green;'> Нет мероприятий по этому событию</h3>`;
         $success = false;
     }
@@ -98,7 +98,7 @@ if ($_POST['action'] == 'getWebForm') {
 
             $success = true;
         }
-    }else{
+    } else {
 
         $success = false;
         // $formLink = explode(';', $event['DESCRIPTION'])[2];
@@ -124,40 +124,53 @@ if ($_POST['action'] == 'getWebForm') {
 
 if ($_POST['web_form_apply'] == 'Y' || $_REQUEST['formresult'] == 'addok' || $_REQUEST['WEB_FORM_ID']) {
     $formId = $_POST['WEB_FORM_ID'];
+    $WEB_FORM_ID = $_POST['WEB_FORM_ID'];
+    CModule::IncludeModule("form");
+    // массив значений ответов
+    $arValues = $_REQUEST;
+    if ($RESULT_ID = \CFormResult::Add($WEB_FORM_ID, $arValues)) {
+        $res = $RESULT_ID > 0 ? 'true' : 'false';
+        $successText = 'Сообщение ' . $RESULT_ID . ' отправлено ';
 
-    ob_start(); ?>
 
-    <?$APPLICATION->IncludeComponent(
-        "lab:form.result.new",
-        "cal",
-        array(
-            "CACHE_TIME" => "3600",
-            "CACHE_TYPE" => "A",
-            "CHAIN_ITEM_LINK" => "",
-            "CHAIN_ITEM_TEXT" => "",
-            "EDIT_URL" => "",
-            "IGNORE_CUSTOM_TEMPLATE" => "Y",
-            "LIST_URL" => "result_list.php",
-            "SEF_MODE" => "N",
-            "SUCCESS_URL" => "",
-            "USE_EXTENDED_ERRORS" => "Y",
-            "WEB_FORM_ID" => $formId,
-            "COMPONENT_TEMPLATE" => "calendar",
-            "VARIABLE_ALIASES" => array(
-                "WEB_FORM_ID" => "WEB_FORM_ID",
-                "RESULT_ID" => "RESULT_ID",
-            )
-        ),
-        false
-    );?>
+    } else {
+        global $strError;
+        $successText = 'Ошибка ' . $strError;
+        $html = ob_start(); ?>
 
-    <?
-    $html = ob_get_contents();
-    ob_end_clean();
+        <? $APPLICATION->IncludeComponent(
+            "lab:form.result.new",
+            "cal",
+            array(
+                "CACHE_TIME" => "3600",
+                "CACHE_TYPE" => "A",
+                "CHAIN_ITEM_LINK" => "",
+                "CHAIN_ITEM_TEXT" => "",
+                "EDIT_URL" => "",
+                "IGNORE_CUSTOM_TEMPLATE" => "Y",
+                "LIST_URL" => "result_list.php",
+                "SEF_MODE" => "N",
+                "SUCCESS_URL" => "",
+                "USE_EXTENDED_ERRORS" => "Y",
+                "WEB_FORM_ID" => $formId,
+                "COMPONENT_TEMPLATE" => "calendar",
+                "VARIABLE_ALIASES" => array(
+                    "WEB_FORM_ID" => "WEB_FORM_ID",
+                    "RESULT_ID" => "RESULT_ID",
+                )
+            ),
+            false
+        );
+
+        $html = ob_get_contents();
+        ob_end_clean();
+    }
+
 
     $arResults = array(
         'html' => $html,
-        'success' => $_REQUEST["RESULT_ID"] != null ? true : false,
+        'success' => $res,
+        'successText' => $successText,
         '$_REQUEST' => $_REQUEST,
     );
     echo json_encode($arResults);

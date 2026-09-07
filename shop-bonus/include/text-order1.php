@@ -66,7 +66,9 @@
 <br>
 <br>
 <div class="flex" style="justify-content: center;">
-    <a href="https://disk.yandex.ru/i/joIGxvVR41MSXA" class="button-link">Подробнее</a>
+    <a  href="https://corp-portal.welcome.moscow/docs/korpkulturaANO/path/Магазин%20бонусов/?nav-folder_list_1222=page-1#hl-3214!show" target="_blank" class="button-link">
+        Подробнее
+    </a>
 </div>
 <br>
 <br>

@@ -22,7 +22,10 @@ if (empty($arResult['CATEGORIES']) || !$arResult['CATEGORIES_ITEMS_EXISTS'])
 			<div class="bx_item_block all_result">
 				<div class="bx_img_element"></div>
 				<div class="bx_item_element">
-					<span class="all_result_title"><a href="<?php echo $arItem['URL']?>"><?php echo $arItem['NAME']?></a></span>
+					<span class="all_result_title">
+                        <a href="/shop-bonus/search/?q=<?php echo $arResult['alt_query'] ? $arResult['alt_query'] :$arResult['query'] ?>"><?php echo $arItem['NAME'] ?>
+                        </a>
+                    </span>
 				</div>
 				<div style="clear:both;"></div>
 			</div>

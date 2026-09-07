@@ -1,5 +1,8 @@
 BX.ready(function (e) {
 
+
+
+
     var ajaxUrl = '/local/ajax/ajax_add_event.php';
 
     $('body').on('click', ' a', function (e) {// data-id="chat21130"
@@ -59,18 +62,22 @@ BX.ready(function (e) {
 
             success: function (response) {
 
-                if (response.success == true) {
-                    BX.closeWait(document.getElementById('popup'));
-                    $('.popup .popup-body form').remove();
-                    $('.popup .popup-body').html(response.html);
+                if (response.success == 'true') {
 
+
+                    BX.closeWait(document.getElementById('popup'));
+                    alert(response.successText);
+                    $('.popup .popup-body form').remove();
+                    $('.popup .loader-overlay').remove();
+                    $('.popup .popup-body').html(response.successText);
                     setTimeout(removePopup, 5000);
-                    // $('#popupOverlay').toggleClass('active').remove();
+
                 }
-                if (response.success == false) {
+                if (response.success == 'false') {
                     BX.closeWait(document.getElementById('popup'));
                     $('.popup .popup-body form').remove();
-                    $('.popup .popup-body').html(response.html);
+                    $('.popup .popup-body').html(response.successText);
+                    alert(response.successText);
                 }
             },
             error: function (xhr, status, error) {

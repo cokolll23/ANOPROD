@@ -147,6 +147,7 @@ bx-newslist-slider-arrow,
 	font-size: 18px;
 	font-family: var(--ui-font-family-secondary, var(--ui-font-family-open-sans));
 	font-weight: var(--ui-font-weight-semi-bold, 600);
+    text-decoration: none;
 }
 .bx-newslist-title a:hover {
 	text-decoration: none;

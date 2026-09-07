@@ -4,7 +4,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Бонусы\"");
 ?><div id="lab-catalog">
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section", 
-	"bootstrap_v4",
+	"bootstrap_v4", 
 	array(
 		"ACTION_VARIABLE" => "action",
 		"ADD_PICT_PROP" => "-",
@@ -32,20 +32,21 @@ $APPLICATION->SetTitle("Интернет-магазин \"Бонусы\"");
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_COMPARE" => "N",
 		"DISPLAY_TOP_PAGER" => "N",
-		"ELEMENT_SORT_FIELD" => "SCALED_PRICE_1",
-		"ELEMENT_SORT_FIELD2" => "sort",
+		"ELEMENT_SORT_FIELD" => "property_NEWPRODUCT",
+		"ELEMENT_SORT_FIELD2" => "SCALED_PRICE_1",
 		"ELEMENT_SORT_ORDER" => "desc",
 		"ELEMENT_SORT_ORDER2" => "asc",
 		"ENLARGE_PRODUCT" => "STRICT",
-		"FILTER_NAME" => "trendFilter",
+		"FILTER_NAME" => "",
 		"HIDE_NOT_AVAILABLE" => "L",
 		"HIDE_NOT_AVAILABLE_OFFERS" => "L",
-		"IBLOCK_ID" => "42",
+		"IBLOCK_ID" => "40",
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_TYPE_ID" => "catalog",
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"LABEL_PROP" => array(
-			0 => "LAB_SKORO",
+			0 => "NEWPRODUCT",
+			1 => "SPECIALOFFER",
 		),
 		"LABEL_PROP_MOBILE" => array(
 		),
@@ -112,7 +113,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Бонусы\"");
 		"PRODUCT_SUBSCRIPTION" => "N",
 		"PROPERTY_CODE" => array(
 			0 => "NEWPRODUCT",
-			1 => "",
+			1 => "MORE_PHOTO",
 		),
 		"PROPERTY_CODE_MOBILE" => array(
 			0 => "ARTNUMBER",
@@ -137,7 +138,7 @@ $APPLICATION->SetTitle("Интернет-магазин \"Бонусы\"");
 		"SHOW_404" => "N",
 		"SHOW_ALL_WO_SECTION" => "Y",
 		"SHOW_CLOSE_POPUP" => "Y",
-		"SHOW_DISCOUNT_PERCENT" => "N",
+		"SHOW_DISCOUNT_PERCENT" => "Y",
 		"SHOW_MAX_QUANTITY" => "Y",
 		"SHOW_OLD_PRICE" => "Y",
 		"SHOW_PRICE_COUNT" => "1",
@@ -148,7 +149,8 @@ $APPLICATION->SetTitle("Интернет-магазин \"Бонусы\"");
 		"USE_ENHANCED_ECOMMERCE" => "N",
 		"USE_MAIN_ELEMENT_SECTION" => "N",
 		"USE_PRICE_COUNT" => "N",
-		"USE_PRODUCT_QUANTITY" => "N"
+		"USE_PRODUCT_QUANTITY" => "N",
+		"DISCOUNT_PERCENT_POSITION" => "top-left"
 	),
 	false
 );?>

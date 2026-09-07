@@ -3,7 +3,6 @@
 namespace Lab\Helpers;
 
 use \Bitrix\Main\UserGroupTable as UserGroupTable;
-
 use Bitrix\Main\Loader;
 use Bitrix\Main\UserTable;
 use Bitrix\Main\Security\Password;
@@ -246,6 +245,27 @@ class UsersHelpers
             $blSTRING_ID = false;
         }
         return $blSTRING_ID;
+    }
+
+    /**
+     * Есть ли в списке пользователей юзер с таким id
+     */
+
+    public static function isUserByUserId($userId)
+    {
+        if ($userId > 0) {
+            $dbUser = UserTable::getList([
+                'select' => ['ID'],
+                'filter' => ['=ID' => $userId,
+                    'ACTIVE' => 'Y']
+            ]);
+            if ($arUser = $dbUser->fetch()) {
+                $isUserByUserId = 1;
+            } else {
+                $isUserByUserId = 0;
+            }
+        }
+        return $isUserByUserId;
     }
 
 }

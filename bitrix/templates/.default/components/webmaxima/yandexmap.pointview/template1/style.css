@@ -1,0 +1,52 @@
+.main_soc_news .icon_youtube {
+    background: url(images/youtube.svg) repeat-y;
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+.icon-btn{
+    background-color: var(--kt-layout-header-bg-color);
+    color: #fff;
+    border: none;
+    width: 132px;
+    height: 34px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+.custom-balloon-wrapper{
+    position: relative;
+    margin-bottom: 10px!important;
+}
+.balun-content_m{
+    margin-bottom: 10px;
+}
+.balun-content_top{
+margin-bottom: 5px;
+}
+
+
+     /* Стили кнопки */
+ /*.icon-btn{
+     display: inline-block;
+     cursor: pointer;
+     font-size:14px;
+     text-decoration:none;
+     padding:10px 20px;
+     color:#f2f4f5;
+     background:#c73255;
+     border-radius:0px;
+     border:2px solid #c73237;
+ }*/
+.btn{ background-color:#c7323e;transition: all 0.2s ease;}
+/*
+.icon-btn:hover{
+    background:#c7323e;
+    color:#ffffff;
+    border:2px solid #354251;
+    transition: all 0.2s ease;
+}
+*/
+
+
+

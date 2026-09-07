@@ -10,6 +10,49 @@ use Lab\Helpers\UsersHelpers as UH;
 
 class IblockEventsHandlers
 {
+
+    /**
+     *  логирование Проверить какие данные идут из /upload/1c_intranet
+     *  IB График отсутствий id=1 CODE = "absence"
+     * 2. Обработчик события добавления элемента (OnAfterIBlockElementAdd)
+     * Вызывается сразу после того, как новый элемент (отсутствие) был сохранен в БД.
+     */
+    public static function OnAfterAbsenceAddHandler(&$arFields)
+    {
+        if ($arFields["IBLOCK_ID"]==1 && intval($arFields["ID"]) > 0) {
+            $log = date('d.m.Y H:i:s') . ' Добавление в ИБ График отсутствия  ' . print_r($arFields, true) . PHP_EOL;
+            file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAbsence.txt", $log, FILE_APPEND);
+        } else {
+            // Если произошла ошибка, логируем текст ошибки из RESULT_MESSAGE
+            $errorText = $arFields["RESULT_MESSAGE"] ?? "Неизвестная ошибка";
+            $log = date('d.m.Y H:i:s') . "ДОБАВЛЕНИЕ (ОШИБКА): ID={$arFields["ID"]}. Текст ошибки: " . $errorText;
+            file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAbsence.txt", $log, FILE_APPEND);
+        }
+        /*$log = date('Y-m-d H:i:s') . ' onStatusChange' . print_r($propsNotZero, true);
+        file_put_contents(__DIR__ . '/log.txt', $log . PHP_EOL, FILE_APPEND);
+        Bitrix\Main\Diag\Debug::dumpToFile($log, '$event onStatusChange' . date('d-m-Y; H:i:s'));*/
+
+    }
+
+    /**
+     * логирование Проверить какие данные идут из /upload/1c_intranet
+     * IB График отсутствий id=1 CODE = "absence" Обработчик события обновления элемента (OnAfterIBlockElementUpdate)
+     * Вызывается после попытки изменения элемента.
+     * ВАЖНО: Срабатывает даже при ошибке, поэтому проверяем флаг RESULT [citation:2].
+     */
+    public static function OnAfterAbsenceUpdateHandler(&$arFields)
+    {
+        if ($arFields["IBLOCK_ID"]==1 && intval($arFields["ID"]) > 0) {
+            $log = date('d.m.Y H:i:s') . ' Изменение в ИБ График отсутствия  ' . print_r($arFields, true) . PHP_EOL;
+            file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAbsence.txt", $log, FILE_APPEND);
+        } else {
+            // Если произошла ошибка, логируем текст ошибки из RESULT_MESSAGE
+            $errorText = $arFields["RESULT_MESSAGE"] ?? "Неизвестная ошибка";
+            $log = date('d.m.Y H:i:s') . "ИЗМЕНЕНИЕ (ОШИБКА): ID={$arFields["ID"]}. Текст ошибки: " . $errorText;
+            file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAbsence.txt", $log, FILE_APPEND);
+        }
+    }
+
     /**
      * суммируются все значения свойств ИБ в поле Итого CODE COLUMN33
      * @param $arFields

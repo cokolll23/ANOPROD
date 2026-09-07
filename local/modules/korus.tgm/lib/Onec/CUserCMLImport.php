@@ -445,11 +445,27 @@ class CUserCMLImport extends \CUserCMLImport
     {
         $heads = $this->GetHeads();
 
+
+
+
         if (!empty($heads)) {
             foreach ($heads as $departmentId => $headId) {
-                $departmentRepository = \Bitrix\Intranet\Service\ServiceContainer::getInstance()
-                    ->departmentRepository();
-                $departmentRepository->setHead($departmentId, $headId);
+                /**
+                 * Если есть раздел и пользователь включает функцию назначенияпольз. руководителем отдела
+                 *
+                 *
+                 */
+                $isUserByUserId = \Lab\Helpers\UsersHelpers::isUserByUserId($headId);
+                $isSectionById = \Lab\Helpers\IblockHelpers::isSectionById(3,$departmentId);
+
+                if ($isUserByUserId && $isSectionById) {
+                    $departmentRepository = \Bitrix\Intranet\Service\ServiceContainer::getInstance()
+                        ->departmentRepository();
+                    $departmentRepository->setHead($departmentId, $headId);
+                }else{
+                    $log = date('Y-m-d H:i:s') . ' Несостыковка  ' . print_r([$departmentId, $headId], true);
+                    file_put_contents($_SERVER["DOCUMENT_ROOT"] . '/log_nesostykovka.txt', $log . PHP_EOL, FILE_APPEND);
+                }
             }
         }
     }

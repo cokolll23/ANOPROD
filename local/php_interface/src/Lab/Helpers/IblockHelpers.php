@@ -302,7 +302,8 @@ class IblockHelpers
         return $PropertyValue;
     }
 
-    /** Получить внешний код значения свойства типа список
+    /**
+     * Получить внешний код значения свойства типа список
      *
      */
     public static function getXML_IDValPropertyById($enumId)
@@ -314,5 +315,34 @@ class IblockHelpers
         if ($item = $result->fetch()) {
             return $item['XML_ID'];
         }
+    }
+
+    /**
+     * Есть ли раздел инфоблока
+     *
+     */
+
+    public static function isSectionById($iIBlockId,$iSectionId)
+    {
+        $parameters = [
+            'select' => ['ID', 'NAME', 'CODE'], // Выбираемые поля
+            'filter' => [
+                '=IBLOCK_ID' => $iIBlockId,
+                '=ID'        => $iSectionId,
+                '=ACTIVE'    => 'Y',
+            ]
+        ];
+
+        $section = SectionTable::getList($parameters)->fetch();
+
+        if ($section)
+        {
+            $isSectionById = 1;
+        }
+        else
+        {
+            $isSectionById = 0;
+        }
+        return $isSectionById;
     }
 }

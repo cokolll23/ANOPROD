@@ -1,3 +1,21 @@
+<style>
+    .interlabs-feedbackform__container{
+        font-family: ONY One, Helvetica, Arial, sans-serif
+    }
+    .interlabs-feedbackform__container .interlabs-feedbackform__container__dialog .body input[type="submit"], .interlabs-feedbackform__container .interlabs-feedbackform__container__dialog .body .js-interlabs-feedbackform__dialog__send-button, .interlab-form-writeBonuses4 .js-interlabs-feedbackform__dialog__send-button4, .interlabs-feedbackform__container .interlabs-feedbackform__container__dialog .body .interlabs-feedbackform__container-succsess__close{
+        border-radius: 10px;
+    }
+    .interlabs-feedbackform__container .interlabs-feedbackform__container__dialog .header label {
+       /* font-style: normal;
+        font-weight: 500;
+        line-height: 34px;
+        font-size: 24px;
+        color: #000000;
+        margin-right: 12px;*/
+        font-family: ONY Moscow Normal;
+    }
+</style>
+
 <div class="row">
     <div class="col-md-6 interlab-form interlab-form-write2admin">
         <? $APPLICATION->IncludeComponent(
@@ -28,7 +46,12 @@
                 )
         ); ?>
     </div>
-    <div class="col-md-6 interlab-form interlab-form-writeBonuses4">
+
+    <?php
+    global $USER; // Глобализируем объект пользователя
+
+    if ($USER->IsAdmin()) {?>
+        <div class="col-md-6 interlab-form interlab-form-writeBonuses4">
         <? $APPLICATION->IncludeComponent(
                 "interlabs:feedbackform",
                 "bonshop4",
@@ -56,5 +79,8 @@
                         "USE_CAPTCHA" => "N"
                 )
         ); ?> <!--<a href="<?php /*= SITE_DIR */ ?>index.php#feedback"> Написать администратору </a>-->
-    </div>
+</div>
+  <?php  }
+    ?>
+
 </div>
