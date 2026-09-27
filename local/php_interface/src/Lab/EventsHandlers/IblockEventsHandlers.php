@@ -19,9 +19,24 @@ class IblockEventsHandlers
      */
     public static function OnBeforeAbsenceAddHandler(&$arFields)
     {
-        if ($arFields["IBLOCK_ID"]==1 && intval($arFields["ID"]) > 0) {
+        if ($arFields["IBLOCK_ID"]==1) {
             $log = date('d.m.Y H:i:s') . ' Before Добавление в ИБ График отсутствия  ' . print_r($arFields, true) . PHP_EOL;
             file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAbsence.txt", $log, FILE_APPEND);
+
+            if (isset($arFields['PROPERTY_VALUES']['STATE'])){
+                if (isset($arFields['PROPERTY_VALUES']['STATE'])){
+                    if ($arFields['PROPERTY_VALUES']['STATE'] === 'Отпуск за свой счет') {
+                        $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 5;
+                    }
+                    if ($arFields['PROPERTY_VALUES']['STATE'] === 'В отпуске без сохранения зарплаты') {
+                        $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 5;
+                    }
+                }
+                if ($arFields['PROPERTY_VALUES']['STATE'] === 'Болеет') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 3;
+                }
+            }
+
         } else {
             // Если произошла ошибка, логируем текст ошибки из RESULT_MESSAGE
             $errorText = $arFields["RESULT_MESSAGE"] ?? "Неизвестная ошибка";
@@ -44,12 +59,12 @@ class IblockEventsHandlers
     {
         if ($arFields["IBLOCK_ID"]==1 && intval($arFields["ID"]) > 0) {
             $log = date('d.m.Y H:i:s') . ' Добавление в ИБ График отсутствия  ' . print_r($arFields, true) . PHP_EOL;
-            //file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAbsence.txt", $log, FILE_APPEND);
+            file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAfterAbsence.txt", $log, FILE_APPEND);
         } else {
             // Если произошла ошибка, логируем текст ошибки из RESULT_MESSAGE
             $errorText = $arFields["RESULT_MESSAGE"] ?? "Неизвестная ошибка";
             $log = date('d.m.Y H:i:s') . "ДОБАВЛЕНИЕ (ОШИБКА): ID={$arFields["ID"]}. Текст ошибки: " . $errorText;
-            //file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAbsence.txt", $log, FILE_APPEND);
+            file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAfterAbsence.txt", $log, FILE_APPEND);
         }
         /*$log = date('Y-m-d H:i:s') . ' onStatusChange' . print_r($propsNotZero, true);
         file_put_contents(__DIR__ . '/log.txt', $log . PHP_EOL, FILE_APPEND);
@@ -65,9 +80,24 @@ class IblockEventsHandlers
      */
     public static function OnBeforeAbsenceUpdateHandler(&$arFields)
     {
-        if ($arFields["IBLOCK_ID"]==1 && intval($arFields["ID"]) > 0) {
+        if ($arFields["IBLOCK_ID"]==1) {
             $log = date('d.m.Y H:i:s') . ' Before Изменение  в ИБ График отсутствия  ' . print_r($arFields, true) . PHP_EOL;
              file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/UpdateAbsence.txt", $log, FILE_APPEND);
+
+            if (isset($arFields['PROPERTY_VALUES']['STATE'])){
+                if ($arFields['PROPERTY_VALUES']['STATE'] === 'Отпуск за свой счет') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 5;
+                }
+                if ($arFields['PROPERTY_VALUES']['STATE'] === 'В отпуске без сохранения зарплаты') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 5;
+                }
+            }
+
+            if (isset($arFields['PROPERTY_VALUES']['STATE'])){
+                if ($arFields['PROPERTY_VALUES']['STATE'] === 'Болеет') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 3;
+                }
+            }
         } else {
             // Если произошла ошибка, логируем текст ошибки из RESULT_MESSAGE
             $errorText = $arFields["RESULT_MESSAGE"] ?? "Неизвестная ошибка";
