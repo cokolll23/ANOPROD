@@ -172,7 +172,7 @@ addEventHandler("main", "OnAfterUserUpdate", ['Lab\EventsHandlers\UserEventsHand
 
 // todo логирование Проверить какие данные идут из /upload/1c_intranet
 //     * IB График отсутствий id=1 CODE = "absence" Обработчик события добавления элемента (OnAfterIBlockElementUpdate)
-$eventManager->addEventHandler("iblock", "OnBeforeIBlockElementAdd", ['Lab\EventsHandlers\IblockEventsHandlers', 'OnBeforeAbsenceAddHandler']);
-$eventManager->addEventHandler("iblock", "OnAfterIBlockElementAdd", ['Lab\EventsHandlers\IblockEventsHandlers', 'OnAfterAbsenceAddHandler']);
+//$eventManager->addEventHandler("iblock", "OnBeforeIBlockElementAdd", ['Lab\EventsHandlers\IblockEventsHandlers', 'OnBeforeAbsenceAddHandler']);
+//$eventManager->addEventHandler("iblock", "OnAfterIBlockElementAdd", ['Lab\EventsHandlers\IblockEventsHandlers', 'OnAfterAbsenceAddHandler']);
 // todo логирование Проверить какие данные идут из /upload/1c_intranet  IB График отсутствий id=1 CODE = "absence" Обработчик события обновления элемента (OnAfterIBlockElementUpdate)
-$eventManager->addEventHandler("iblock", "OnBeforeIBlockElementUpdate", ['Lab\EventsHandlers\IblockEventsHandlers', 'OnBeforeAbsenceUpdateHandler']);
+//$eventManager->addEventHandler("iblock", "OnBeforeIBlockElementUpdate", ['Lab\EventsHandlers\IblockEventsHandlers', 'OnBeforeAbsenceUpdateHandler']);
