@@ -34,6 +34,15 @@ class IblockEventsHandlers
                 if ($arFields['PROPERTY_VALUES']['STATE'] === 'Дополнительные выходные дни неоплачиваемые') {
                     $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 113;
                 }
+                if ($arFields['PROPERTY_VALUES']['STATE'] === 'Отсутствие с сохранением оплаты') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 1;// донорские дни
+                }
+                /*if ($arFields['PROPERTY_VALUES']['STATE'] === 'Отсутствие с сохранением оплаты') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 1;// Обучение
+                }*/
+                if ($arFields['PROPERTY_VALUES']['STATE'] === 'Дополнительный отпуск') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 1;
+                }
 
                 if ($arFields['PROPERTY_VALUES']['STATE'] === 'Болеет') {
                     $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 3;
