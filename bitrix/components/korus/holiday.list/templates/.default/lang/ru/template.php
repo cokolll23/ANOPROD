@@ -50,4 +50,5 @@ $MESS["BITRIX_PLANNER_TRANSFER"] = "перенос, не согласовано"
 $MESS["BITRIX_PLANNER_PLAN_CHANGE"] = "Отклонен (Планирование графика отпусков)";
 $MESS["BITRIX_PLANNER_OUT_OF_PLAN"] = "Внеплановый отпуск (отпуск вне графика)";
 $MESS["BITRIX_PLANNER_OUT_OF_PLAN_CANCEL"] = "Отменить отпуск";
+$MESS["BITRIX_PLANNER_OTGUL"] = "отгул";
 ?>

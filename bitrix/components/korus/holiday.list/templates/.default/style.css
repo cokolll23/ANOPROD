@@ -1,0 +1,1354 @@
+#holidays table {
+    border-collapse: collapse;
+}
+
+#holidays th {
+    border: 1px solid #CCd;
+    padding: 4px;
+}
+
+#holidays th.hidden,
+#holidays td.hidden,
+.planner_descr-wrap tr.hidden {
+    display: none;
+}
+
+#holidays td {
+    border: 1px solid #CCd;
+}
+
+table.itogo {
+    width: 100%;
+}
+
+.itogo td {
+    padding: 5px 15px;
+}
+
+.itogo th {
+    padding: 4px 10px;
+    color: #000;
+}
+
+.edit-btn {
+    float: right;
+    font-size: 20px;
+    padding-right: 8px;
+    padding-left: 8px;
+    color: #2cb111;
+    cursor: pointer;
+}
+
+.plus-btn {
+    float: right;
+    font-size: 20px;
+    padding-right: 8px;
+    padding-left: 8px;
+    color: #2cb111;
+    cursor: pointer;
+    display: none;
+}
+
+.plus-btn:hover {
+    background-color: #EAEAF7;
+}
+
+.link-approve {
+    color: #090;
+}
+
+.link-approve:hover {
+    color: #0c0;
+}
+
+.link-disapprove {
+}
+
+.link-disapprove:hover {
+}
+
+.link-remove {
+    color: #900;
+}
+
+.link-remove:hover {
+    color: #c00;
+}
+
+table#main-table td {
+    width: 20px;
+    height: 20px;
+    border-color: rgb(165, 197, 223);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.day-title {
+    font-weight: bold;
+    text-align: center;
+}
+
+.bg-weekend {
+    background-color: rgb(245, 178, 178);
+}
+
+.bg-weekend-past {
+    background-color: rgb(196, 179, 228);
+}
+
+.bg-past {
+    background-color: rgb(231, 231, 243);
+}
+
+.holiday-red {
+    color: #ff8484;
+}
+
+.bg-holiday {
+    background-color: #f22;
+}
+
+.bg-workday {
+    background-color: #c9fd4b;
+}
+
+.bg-holiday-past {
+    background-color: #d21c1c;
+}
+
+.bg-workday-past {
+    background-color: #a0cc37;
+}
+
+.day-past {
+    background-color: rgb(231, 231, 243);
+}
+
+.day-past-current {
+    background-color: #caebf2;
+}
+
+.day-saved {
+    background-color: #dde0a4;
+    position: relative;
+}
+
+.day-future {
+    position: relative;
+}
+
+.day-transfer {
+    position: relative
+}
+
+.day-transfer:before {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #ccc 49.9%, #ccc 60%, rgba(0, 0, 0, 0) 60%), linear-gradient(45deg, #ccc 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 0.5em 0.5em;
+    content: ' ';
+    display: block;
+    height: 100%;
+}
+
+.shtrix:before {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #ccc 49.9%, #ccc 60%, rgba(0, 0, 0, 0) 60%), linear-gradient(45deg, #ccc 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 0.5em 0.5em;
+    position: absolute;
+    content: ' ';
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 21px;
+}
+
+.day-transfer-vacation:before {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, rgb(76, 184, 76) 49.9%, rgb(76, 184, 76) 60%, rgba(0, 0, 0, 0) 60%), linear-gradient(45deg, rgb(76, 184, 76) 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 0.5em 0.5em;
+}
+
+.day-transfer-assignment:before {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #e4a9da 49.9%, #e4a9da 60%, rgba(0, 0, 0, 0) 60%), linear-gradient(45deg, #e4a9da 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 0.5em 0.5em;
+}
+
+.day-transfer-leavematerinity:before {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #b7d4f8 49.9%, #b7d4f8 60%, rgba(0, 0, 0, 0) 60%), linear-gradient(45deg, #b7d4f8 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 0.5em 0.5em;
+}
+
+.day-transfer-perenos:before {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #b38a36 49.9%, #b38a36 60%, rgba(0, 0, 0, 0) 60%), linear-gradient(45deg, #b38a36 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 0.5em 0.5em;
+}
+
+.day-transfer-leavesick:before {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #f2a584 49.9%, #f2a584 60%, rgba(0, 0, 0, 0) 60%), linear-gradient(45deg, #f2a584 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 0.5em 0.5em;
+}
+
+.day-transfer-leaveunpayed:before {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #dd9c26 49.9%, #dd9c26 60%, rgba(0, 0, 0, 0) 60%), linear-gradient(45deg, #dd9c26 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 0.5em 0.5em;
+}
+
+.day-transfer-unknown:before {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #fe3737 49.9%, #fe3737 60%, rgba(0, 0, 0, 0) 60%), linear-gradient(45deg, #fe3737 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 0.5em 0.5em;
+}
+
+.day-transfer-personal:before {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #a68729 49.9%, #a68729 60%, rgba(0, 0, 0, 0) 60%), linear-gradient(45deg, #a68729 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 0.5em 0.5em;
+}
+
+.day-transfer-pregnant:before {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #ffd4d4 49.9%, #ffd4d4 60%, rgba(0, 0, 0, 0) 60%), linear-gradient(45deg, #ffd4d4 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 0.5em 0.5em;
+}
+
+.day-transfer-child:before {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #92ff98 49.9%, #92ff98 60%, rgba(0, 0, 0, 0) 60%), linear-gradient(45deg, #92ff98 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 0.5em 0.5em;
+}
+
+.day-transfer-out_of_plan:before {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #254d1f 49.9%, #254d1f 60%, rgba(0, 0, 0, 0) 60%), linear-gradient(45deg, #254d1f 10%, rgba(0, 0, 0, 0) 10%);
+    background-size: 0.5em 0.5em;
+}
+
+.comment {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 2px;
+    white-space: nowrap;
+    z-index: 1000;
+    color: #666;
+}
+
+.active-day {
+    height: 100%;
+}
+
+.day-partial {
+    height: 40%;
+}
+
+.mark-vacation {
+    background-color: rgb(76, 184, 76);
+}
+
+.mark-assignment {
+    background-color: #e4a9da;
+}
+
+.mark-leavematerinity {
+    background-color: #b7d4f8;
+}
+
+.mark-perenos {
+    background-color: #b38a36;
+}
+
+.mark-leavesick {
+    background-color: #f2a584;
+}
+
+.mark-leaveunpayed {
+    background-color: #dd9c26;
+}
+
+.mark-unknown {
+    background-color: #fe3737;
+}
+
+.mark-other {
+    background-color: #ccc;
+}
+
+.mark-personal {
+    background-color: #a68729;
+}
+
+.mark-pregnant {
+    background-color: #ffd4d4;
+}
+
+.mark-child {
+    background-color: #92ff98;
+}
+
+.current-user {
+    /*background-color:rgb(218, 252, 207);*/
+    background-color: #adf0f2;
+}
+
+.current-user:hover {
+}
+
+.any-user:hover {
+    background-color: rgb(240, 248, 248);
+}
+
+.planner-ok-button {
+    float: left;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.planner-esc-button {
+    float: left;
+    padding: 12px;
+    cursor: pointer;
+    margin-left: 10px;
+    text-transform: uppercase;
+    color: #f1361b;
+}
+
+.zero-pad {
+    padding: 0;
+}
+
+.planner-err {
+    color: red;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 20px;
+    background-color: #FFEEEE;
+    border-radius: 30px;
+    border: 1px solid #ffc7c7;
+    display: inline-block;
+}
+
+.days_num {
+    font-weight: bold;
+}
+
+.planner-red {
+    color: #FF6666;
+}
+
+.dep0 {
+    background-color: white;
+}
+
+.dep1 {
+    background-color: wheat;
+}
+
+.hol_table {
+    max-width: 100%;
+    display: block !important;
+}
+
+#main-table {
+    margin-bottom: 20px;
+    overflow-x: auto;
+    max-width: 100%;
+    display: block;
+}
+
+#main-table th {
+    width: 300px;
+}
+
+#main-table tr {
+    max-width: 100%;
+}
+
+.el-pagination {
+    margin-bottom: 20px;
+}
+
+.depList {
+    position: absolute;
+    z-index: 1;
+}
+
+.depList th {
+    width: 300px;
+    height: 20px;
+    background-color: white;
+    padding: 4px;
+}
+
+.depList .dep1 {
+    background-color: wheat;
+}
+
+/*.dep_select {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}*/
+
+/* ------------------------------------------------------------- Edit Form PopUp */
+
+.date_edit_form-wr {
+    z-index: 1;
+}
+
+.edit_form-wrap {
+    padding: 15px;
+    background: #fff;
+}
+
+.date_edit_title {
+    padding: 7px 7px 7px 7px;
+    font-size: 16px;
+    color: #333;
+}
+
+.date_edit_tr {
+    height: 40px;
+}
+
+.date_edit_tr td {
+    color: #333;
+}
+
+.date_edit_tr td:first-child {
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    padding: 7px 10px 7px 0;
+}
+
+.date_edit_tr.first td {
+    padding-top: 15px;
+}
+
+.dt_buttons td {
+    padding-top: 10px;
+}
+
+.edit_type_select {
+    width: 145px;
+}
+
+/* --- General custom --- */
+
+table#main-table td {
+    color: #000;
+}
+
+table#main-table td.day-title {
+    padding: 4px;
+}
+
+.depList tr.depFirst th {
+    height: 23px;
+}
+
+.depList tr.depSecond th {
+    height: 23px;
+}
+
+#holidays .depList th.dep0 {
+    color: #000;
+    padding: 4px;
+}
+
+.hol_table_year {
+    color: #000;
+    padding: 0 20% 0 0;
+    text-align: right;
+}
+
+.hol_table_year-item {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.planner_filter .departments {
+    text-align: left;
+}
+
+.planner_filter .departments > span {
+    display: inline-block;
+    width: 190px;
+}
+
+.planner_filter .departments .el-select {
+    width: calc(100% - 200px);
+}
+
+.planner_descr-wrap {
+    clear: both;
+    padding: 30px 0 0 0;
+    margin: 0 0 25px 0;
+}
+
+.planner_descr-wrap table td {
+    padding: 2px 10px 2px 10px;
+}
+
+.planner_descr-wrap table td.spmin {
+    text-transform: lowercase;
+}
+
+.planner_period {
+
+}
+
+.planner_period table {
+    width: 100%;
+}
+
+.planner_period table td {
+    padding: 5px;
+    color: #000;
+}
+
+.task_btn {
+    text-align: center;
+    outline: 0;
+    height: 44px;
+    line-height: 42px;
+    min-width: 140px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #dadbdb;
+    padding: 0 20px;
+    position: relative;
+    display: inline-block;
+    transition: all .1s ease;
+    -webkit-transition: all .1s ease;
+    background: #1da423;
+    color: #fff;
+    margin: 0 20px 20px 20px;
+    cursor: pointer;
+}
+
+/* ------------------------------ New structr ------------------------------- */
+
+.planner_toper {
+    display: flex;
+}
+
+.planner_toper-left {
+    width: 70%;
+}
+
+.planner_toper-right {
+    width: 30%;
+    text-align: left;
+}
+
+.planner_toper-right table {
+    width: 100%;
+}
+
+.planner_filter {
+    margin: 30px 0 0 0;
+    overflow: hidden;
+}
+
+.planner_filter .dep_select {
+    width: 100%;
+    display: block;
+}
+
+.planner_filter .dep_select .departments {
+    margin: 0 0 20px 0;
+}
+
+.dep_select .date_from {
+    text-align: left;
+    display: inline-block;
+}
+
+.dep_select .date_to {
+    text-align: left;
+    display: inline-block;
+}
+
+.date_from-first .date_from,
+.date_from-sec .date_from {
+    width: 50%;
+}
+
+.date_from-first {
+    display: flex;
+}
+
+.date_from-sec {
+    display: flex;
+    margin: 20px 0;
+}
+
+.dep_select .el-select {
+    width: 650px;
+}
+
+.date_from input,
+.date_to input {
+    vertical-align: middle;
+}
+
+.dep_select .date_from .period_input,
+.dep_select .date_to .period_input {
+    width: 180px;
+    height: 30px;
+    border: 1px solid #dadbdb;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+.dep_select .date_from .period_cal,
+.dep_select .date_to .period_cal {
+    pointer-events: none;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    margin-left: -30px;
+    float: left;
+    background: url(/local/components/korus/wiki.element.add.form/templates/.default/img/icons.png) no-repeat 2px -71px;
+    border-radius: 10px;
+    padding-left: 10px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.dep_select .date_w {
+    display: inline-block;
+    padding: 0 5px 0 0;
+    position: relative;
+    top: 2px;
+}
+
+.planner_descr-wrap table td.day-thumb {
+    padding: 0 0 0 0;
+}
+
+/* ----------------------------------------------- IE 11 */
+
+.bx-ie11 .dep_select .el-checkbox:last-of-type {
+    margin-right: 100%;
+    margin-left: 0;
+}
+
+.status {
+    position: relative;
+}
+
+.status:hover .task_status {
+    display: block;
+}
+
+.task_status {
+    color: black;
+    display: none;
+    position: absolute;
+    bottom: 25px;
+    right: 0;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+    min-width: 180px;
+}
+
+.task_status:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    position: absolute;
+    bottom: -6px;
+    transform: rotate(45deg);
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.hr-sec {
+    display: block;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.hr-sec .user > span {
+    display: inline-block;
+    width: 190px;
+}
+
+.hr-sec .user .el-select {
+    display: inline-block;
+    width: calc(100% - 200px);
+    margin-bottom: 20px;
+}
+
+.hr-sec .abs > span {
+    display: inline-block;
+    width: 190px;
+}
+
+.hr-sec .abs .el-select {
+    display: inline-block;
+    width: calc(100% - 200px);
+}
+
+.pointer {
+    cursor: pointer;
+    color: #39A9DC;
+}
+
+.bg-weekend-it {
+    background-color: rgba(245, 178, 178, 0.3);
+}
+
+.el-dialog .el-date-editor.el-input {
+    width: 130px;
+    margin: 0 20px;
+}
+
+.period,
+.period_title {
+    margin-bottom: 20px;
+}
+
+.departments .el-tag {
+    white-space: normal;
+    height: auto;
+}
+
+.depList th.unplan {
+    background-color: rgb(245, 178, 178);
+}
+
+.mark-plan_change {
+    background-color: red;
+}
+
+.mark-out_of_plan {
+    background-color: #254d1f;
+}
+
+
+.plan_status {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.plan_status span {
+    display: inline-block;
+    width: 190px;
+}
+
+.plan_status .el-input span,
+.plan_status .el-select span {
+    width: auto;
+}
+
+.plan_status .el-select {
+    display: inline-block;
+    width: calc(100% - 200px);
+}
+
+
+/* ------------------------------ Planner custom style (bcloud) ------------------------------- */
+
+.planner_filter .dep_select .el-select .el-input__inner {
+    border-radius: 3px;
+}
+
+.planner_filter .dep_select .el-select .el-tag {
+    position: relative;
+    background: var(--main-ui-square-background);
+    border-radius: 2px;
+    font: 15px/30px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    vertical-align: middle;
+    -webkit-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+    padding: 0 30px 0 13px;
+    outline: none;
+    height: 31px;
+    color: #ffffff;
+    margin: 4px 0 4px 5px;
+    border: none;
+}
+
+.planner_filter .dep_select .el-select .el-tag__close.el-icon-close {
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    right: 0;
+    position: absolute;
+    top: 7px;
+    color: #FFF;
+    background-image: url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%2010%2010%22%3E%3Cpath%20fill%3D%22%23535C69%22%20fill-rule%3D%22evenodd%22%20d%3D%22M5.065%203.682L2.377.994%201.01%202.362%203.696%205.05.99%207.757l1.368%201.37%202.708-2.71%202.7%202.703%201.37-1.368-2.702-2.7%202.682-2.684L7.748%201%205.065%203.682z%22/%3E%3C/svg%3E);
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .3;
+    -webkit-transition: opacity .3s ease;
+    transition: opacity .3s ease;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.planner_filter .dep_select .el-select .el-tag__close.el-icon-close:hover {
+    opacity: 1;
+}
+
+.planner_filter .dep_select .el-select .el-tag__close.el-icon-close::before {
+    content: initial;
+}
+
+.planner_filter .dep_select .date_from-sec .el-checkbox__input.is-checked .el-checkbox__inner {
+    background-color: #3f75ff;
+    border-color: #3f75ff;
+}
+
+.hol_table .planner_toper-left {
+    width: 60%;
+    padding: 0 45px 0 0;
+}
+
+.hol_table .planner_toper-right {
+    width: 40%;
+}
+
+.hol_table .planner_filter {
+    margin: 30px 0 0 0;
+    max-width: 1110px;
+}
+
+.hol_table .planner_descr-wrap {
+    padding: 0 0 0 0;
+    margin: 59px 0 30px 0;
+}
+
+.hol_table .hol_table_year {
+    display: flex;
+    justify-content: center;
+    padding: 5px 0 15px 0;
+    text-align: right;
+    font-family: "OpenSans-Semibold", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: #545c6a;
+    font-size: 16px;
+    border-bottom: 1px solid #dce2e6;
+}
+
+#holidays .hol_table .planner_descr-wrap th {
+    border: none;
+    padding: 0 0 0 0;
+}
+
+#holidays .hol_table .planner_descr-wrap td {
+    border: none;
+    padding: 0 0 0 0;
+}
+
+#holidays .hol_table .planner_descr-wrap td.day-color {
+    display: flex;
+    padding: 0 0 0 0;
+    width: 27px;
+    height: 27px;
+    margin: 0 0 2px 0;
+    border-radius: 2px;
+}
+
+#holidays .planner_descr-wrap table td.spmin {
+    text-transform: lowercase;
+    font-family: "OpenSans-Semibold", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: #333;
+    font-size: 14px;
+    padding: 0 10px 0 10px;
+    line-height: 20px;
+}
+
+#holidays .planner_descr-wrap td {
+    border: none;
+}
+
+#holidays .day-thumb { /* отмечено, не сохранено */
+    background-color: #58d1ef;
+}
+
+#holidays .day-saved { /* сохранено, не согласовано */
+    background-color: #f6ce00;
+}
+
+#holidays .planner_period td.mark-vacation:before,
+#holidays .mark-vacation { /* отпуск ежегодный */
+    background-color: #a5de00;
+}
+
+#holidays .planner_period td.mark-leavematerinity:before,
+#holidays .mark-leavematerinity { /* отпуск декретный */
+    background-color: #f968b6;
+}
+
+#holidays .planner_period td.mark-leaveunpayed:before,
+#holidays .mark-leaveunpayed { /* отпуск за свой счет */
+    background-color: #00736a;
+}
+
+#holidays .day-transfer,
+#holidays .day-transfer.shtrix { /* перенос отпуска */
+    background-color: #a2a8b0;
+}
+
+#holidays .hol_table .planner_descr-wrap .shtrix:before,
+#holidays .hol_table .planner_descr-wrap .day-transfer.shtrix:before { /* перенос отпуска (прячем штрих) */
+    content: initial;
+}
+
+#holidays .planner_period td.mark-assignment:before,
+#holidays .mark-assignment { /* Командировка */
+    background-color: #b02fb0;
+}
+
+#holidays .planner_period td.mark-leavesick:before,
+#holidays .mark-leavesick { /* больничный */
+    background-color: #3f8bcd;
+}
+#holidays .planner_period td.mark-otgul:before,
+#holidays .mark-otgul { /* отгул */
+    background-color: #f0df22;
+}
+
+#holidays .planner_period td.mark-other:before,
+#holidays .mark-other { /* другое */
+    background-color: #444444;
+}
+
+#holidays .planner_period td.mark-plan_change:before,
+#holidays .mark-plan_change { /* отклонен (планирование графика отпусков) */
+    background-color: #f11716;
+}
+
+#holidays .planner_period td.mark-out_of_plan:before,
+#holidays .mark-out_of_plan { /* внеплановый отпуск (отпуск вне графика) */
+    background-color: #759e00;
+}
+
+#holidays .planner_period td.mark-personal:before,
+#holidays .mark-personal { /* персональные календари */
+    background-color: #a68729;
+}
+
+/* -- Tables custom -- */
+#holidays .dep1,
+#holidays .depList .dep1 {
+    background-color: #fbf7f0;
+}
+
+#holidays .ajax table {
+    border-left: 1px solid #edeef0;
+}
+
+#holidays .depList {
+    border-right: 2px solid #dddee1;
+}
+
+#holidays .depList th {
+    width: 300px;
+    height: 20px;
+    line-height: 16px;
+    border: 1px solid #edeef0;
+}
+
+#holidays .depList th.dep0,
+#holidays .depList th.dep1 {
+    font-family: "OpenSans-Light", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: #000000;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid #edeef0;
+    padding: 6px 10px 6px 10px;
+}
+
+#holidays .depList tr.depFirst th {
+    height: 25px;
+    padding: 0 0 0 0;
+    border: none;
+    border-top: 1px solid #edeef0;
+}
+
+#holidays .depList tr.depSecond th {
+    height: 27px;
+    padding: 0 0 0 10px;
+    border: none;
+    background: #eef2f4;
+    font-family: "OpenSans-SemiBold", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: #000;
+    font-size: 14px;
+}
+
+#holidays .depList tr:last-child th {
+    border-top: 1px solid #ffffff;
+}
+
+#holidays #main-table th {
+    font-family: "OpenSans-Light", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    border: none;
+    border-bottom: 1px solid #edeef0;
+    padding: 6px 10px;
+    height: 20px;
+    line-height: 16px;
+}
+
+#holidays #main-table tr:first-child th:first-child,
+#holidays #main-table tr:nth-child(2) th:first-child {
+    padding: 2px 10px 2px 10px;
+}
+
+#holidays #main-table tr:nth-child(2) th:first-child {
+    border-bottom: none;
+}
+
+#holidays #main-table tr:first-child td.day-title {
+    height: 26px;
+    padding: 0 0 0 0;
+    border: none;
+    background-color: #e8f8fd;
+}
+
+#holidays #main-table tr:first-child td.day-title {
+    font: normal normal normal 13px/26px Arial, Helvetica, sans-serif;
+    color: #000000;
+    text-align: left;
+    padding: 1px 0 0 12px;
+    height: 25px;
+    line-height: 25px;
+    border-right: 1px solid #dae8ee;
+}
+
+#holidays #main-table td.day-title {
+    height: 26px;
+    padding: 0 6px 0 6px;
+    border-top: 1px solid #ceebf5;
+    border-bottom: none;
+    border-color: #ceebf5;
+    background-color: #d3f1fb;
+    border-right: 1px solid #c9e5f0;
+    vertical-align: top;
+    font: normal normal normal 11px/26px Arial, Helvetica, sans-serif;
+    color: #535c69;
+}
+
+#holidays #main-table td.day-title.bg-weekend {
+    background-color: #cce9f4;
+}
+
+#holidays #main-table .bg-weekend-it {
+    background-color: rgba(239, 234, 234, 0.4);
+}
+
+#holidays #main-table .current-user {
+    background-color: rgba(173, 240, 242, 0.6);
+}
+
+#holidays #main-table .current-user td {
+    position: relative;
+}
+
+#holidays #main-table .current-user td:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 26px;
+    height: 100%;
+    background-color: rgba(173, 240, 242, 0.6);
+}
+
+#holidays #main-table .zero-pad .active-day {
+    position: relative;
+    margin: 0 -1px 0 0;
+}
+
+#holidays #main-table td {
+    border: none;
+    border-right: 1px solid #ebebeb;
+}
+
+#holidays #main-table tbody,
+#holidays .depList tr:last-child th {
+    border-bottom: 1px solid #dddee1;
+}
+
+
+/*----------------- Other tables custom ------------------*/
+#holidays .planner_period {
+    margin: 30px 0 0 0;
+    font-family: "OpenSans-SemiBold", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: #4c4c4c;
+}
+
+#holidays .itogo {
+    margin: 30px 0 0 0;
+    font-family: "OpenSans-SemiBold", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: #4c4c4c;
+}
+
+#holidays .planner_period .current-user,
+#holidays .itogo .current-user {
+    background-color: transparent;
+}
+
+#holidays .planner_period table tr:first-child td {
+    padding-right: 15px;
+}
+
+#holidays .planner_period table td,
+#holidays .itogo td {
+    font-family: sans-serif;
+    padding: 6px 10px;
+}
+
+#holidays .planner_period table tr:first-child td,
+#holidays .itogo tr:first-child td {
+    font-family: "OpenSans-SemiBold", "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+#holidays .planner_period table td:first-child,
+#holidays .itogo td:first-child {
+    font-family: "OpenSans-Light", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #000000;
+}
+
+#holidays .itogo th {
+    padding: 6px 10px;
+
+}
+
+#holidays .planner_period table td,
+#holidays .itogo th {
+    color: #4c4c4c;
+}
+
+#holidays .planner_period table td:nth-child(2) {
+    position: relative;
+    background-color: transparent;
+    padding: 6px 10px 6px 40px;
+}
+
+#holidays .planner_period td:before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 28px;
+    height: 28px;
+    border-radius: 2px;
+}
+
+/*-----------------------------------*/
+
+.hol_table .planner_filter .departments,
+.hol_table .planner_filter .hr-sec .user,
+.hol_table .planner_filter .hr-sec .abs,
+.hol_table .planner_filter .hr-sec .plan_status {
+    display: flex;
+    flex-direction: column;
+}
+
+.hol_table .planner_filter .departments > span,
+.hol_table .planner_filter .hr-sec .user > span,
+.hol_table .planner_filter .hr-sec .abs > span,
+.hol_table .planner_filter .hr-sec .plan_status > span {
+    color: #868c96;
+    font-family: "OpenSans-SemiBold", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    display: block;
+    margin: 0 0 10px 0;
+    width: 100%;
+}
+
+.hol_table .planner_filter .departments > .el-select,
+.hol_table .planner_filter .hr-sec .user > .el-select,
+.hol_table .planner_filter .hr-sec .abs > .el-select,
+.hol_table .planner_filter .hr-sec .plan_status > .el-select {
+    width: 100%;
+}
+
+/*.dep_select .date_from-first .date_to {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+    align-items: center;
+}*/
+
+.date_from-first .date_from,
+.date_from-first .date_from {
+    width: 290px;
+}
+
+#uiToolbarContainer {
+    position: relative;
+}
+
+#addVacationButton {
+    position: absolute;
+    right: 15px;
+}
+
+#vacationChoiceWindow {
+    display: none;
+}
+
+#vacationChoiceWindow a {
+    margin: 0;
+    text-align: center;
+}
+
+#vacationChoiceWindow a + a {
+    margin-top: 10px;
+}
+
+.vac-choice-title-bar {
+    width: calc(100% - 30px);
+    display: block;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    #addVacationButton {
+        position: relative;
+        margin-top: 10px;
+    }
+    #addVacationButton .webform-small-button.bx24-top-toolbar-button, .webform-small-button.bx24-top-toolbar-add {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .planner_toper {
+        flex-direction: column;
+    }
+    .hol_table .planner_toper-left, .planner_toper-right {
+        width: 100%;
+    }
+    #holidays .depList {
+        display: none;
+    }
+    .any-user a {
+        font-family: "OpenSans-Light", "Helvetica Neue", Arial, Helvetica, sans-serif;
+        color: #000000;
+        font-size: 14px;
+    }
+    .date_from-first {
+        flex-direction: column;
+    }
+    .date_from-first .date_from, .date_from-first .date_from {
+        margin-bottom: 10px;
+        width: 100% !important;
+    }
+    .date_from-sec {
+        flex-direction: column;
+    }
+    .date_from-first .date_from, .date_from-sec .date_from {
+        margin-bottom: 10px;
+    }
+    .el-date-editor.el-input, .el-date-editor.el-input__inner {
+        width: 100%!important;
+    }
+    .dep_select .date_w {
+        margin-bottom: 5px;
+    }
+    .date_from-first .date_from, .date_from-sec .el-checkbox {
+        white-space: normal;
+    }
+    .date_from-sec .date_to .el-checkbox {
+        display: flex;
+        align-items: center;
+        font-size: 11px;
+    }
+    .date_from-sec .date_from .el-checkbox {
+        display: flex;
+        align-items: center;
+        font-size: 11px;
+    }
+    .date_from-sec .date_to .el-checkbox .el-checkbox__label {
+        font-size: 12px;
+    }
+    .date_from-sec .date_from .el-checkbox .el-checkbox__label {
+        font-size: 12px;
+    }
+}
+
+.bx-user-info-shadow-v, .bx-user-info-shadow {
+    background: none;
+}
+.bx-user-info-data {
+    padding: 0;
+}
+.bx-user-info-wrap {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px;
+    border-radius: 23px;
+    background: #fff;
+    color: #000;
+    text-align: left;
+    box-shadow: 0 6px 21px 0 rgba(83,92,105,.15);
+}
+.bx-user-info-shadow .bx-user-info-wrap:before {
+    content: '';
+    position: absolute;
+    left: 36px;
+    bottom: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px 12px 0 12px;
+    border-color: #fff transparent transparent transparent;
+    z-index: 2;
+}
+.bx-user-info-shadow-v .bx-user-info-wrap:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 12px 12px 12px;
+    border-color: transparent transparent #fff transparent;
+    z-index: 2;
+}
+.field-row-managers {
+    display: none;
+}
+.bx-user-info-data .bx-user-info-data-cont {
+    height: 100%;
+    width: 100%;
+}
+.bx-user-info-data-photo {
+    display: block;
+    height: 57px;
+    width: 57px;
+    border-radius: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+.bx-user-info-data-photo img {
+    width: 57px;
+    height: 57px;
+}
+.bx-user-info-leftcolumn .bx-user-tb-control-left {
+    width: 57px;
+    height: auto;
+}
+.bx-user-info-leftcolumn {
+    padding: 0;
+}
+.bx-user-info-data .bx-user-info-data-cont .bx-user-info-data-name a {
+    font-weight: normal;
+}
+.bx-user-info-data .bx-user-info-data-info .field-name {
+    font-family: var(--ui-font-family-primary,var(--ui-font-family-helvetica));
+    font-size: var(--ui-font-size-sm, 13px);
+    color: var(--ui-color-text-subtle, #828b95);
+}
+.bx-user-info-data .bx-user-info-data-info .field-value,
+.bx-user-info-data .bx-user-info-data-info .field-value a{
+    font-family: var(--ui-font-family-primary,var(--ui-font-family-helvetica));
+    font-size: var(--ui-font-size-xs,12px);
+    color: var(--ui-color-text-primary,#333);
+}

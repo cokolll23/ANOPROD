@@ -19,19 +19,22 @@ class IblockEventsHandlers
      */
     public static function OnBeforeAbsenceAddHandler(&$arFields)
     {
-        if ($arFields["IBLOCK_ID"]==1) {
+        if ($arFields["IBLOCK_ID"] == 1) {
             $log = date('d.m.Y H:i:s') . ' Before Добавление в ИБ График отсутствия  ' . print_r($arFields, true) . PHP_EOL;
             file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAbsence.txt", $log, FILE_APPEND);
 
-            if (isset($arFields['PROPERTY_VALUES']['STATE'])){
-                if (isset($arFields['PROPERTY_VALUES']['STATE'])){
-                    if ($arFields['PROPERTY_VALUES']['STATE'] === 'Отпуск за свой счет') {
-                        $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 5;
-                    }
-                    if ($arFields['PROPERTY_VALUES']['STATE'] === 'В отпуске без сохранения зарплаты') {
-                        $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 5;
-                    }
+            if (isset($arFields['PROPERTY_VALUES']['STATE'])) {
+
+                if ($arFields['PROPERTY_VALUES']['STATE'] === 'Отпуск за свой счет') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 5;
                 }
+                if ($arFields['PROPERTY_VALUES']['STATE'] === 'В отпуске без сохранения зарплаты') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 5;
+                }
+                if ($arFields['PROPERTY_VALUES']['STATE'] === 'Дополнительные выходные дни неоплачиваемые') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 113;
+                }
+
                 if ($arFields['PROPERTY_VALUES']['STATE'] === 'Болеет') {
                     $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 3;
                 }
@@ -57,7 +60,7 @@ class IblockEventsHandlers
      */
     public static function OnAfterAbsenceAddHandler(&$arFields)
     {
-        if ($arFields["IBLOCK_ID"]==1 && intval($arFields["ID"]) > 0) {
+        if ($arFields["IBLOCK_ID"] == 1 && intval($arFields["ID"]) > 0) {
             $log = date('d.m.Y H:i:s') . ' Добавление в ИБ График отсутствия  ' . print_r($arFields, true) . PHP_EOL;
             file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAfterAbsence.txt", $log, FILE_APPEND);
         } else {
@@ -80,11 +83,11 @@ class IblockEventsHandlers
      */
     public static function OnBeforeAbsenceUpdateHandler(&$arFields)
     {
-        if ($arFields["IBLOCK_ID"]==1) {
+        if ($arFields["IBLOCK_ID"] == 1) {
             $log = date('d.m.Y H:i:s') . ' Before Изменение  в ИБ График отсутствия  ' . print_r($arFields, true) . PHP_EOL;
-             file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/UpdateAbsence.txt", $log, FILE_APPEND);
+            file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/UpdateAbsence.txt", $log, FILE_APPEND);
 
-            if (isset($arFields['PROPERTY_VALUES']['STATE'])){
+            if (isset($arFields['PROPERTY_VALUES']['STATE'])) {
                 if ($arFields['PROPERTY_VALUES']['STATE'] === 'Отпуск за свой счет') {
                     $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 5;
                 }
@@ -93,7 +96,7 @@ class IblockEventsHandlers
                 }
             }
 
-            if (isset($arFields['PROPERTY_VALUES']['STATE'])){
+            if (isset($arFields['PROPERTY_VALUES']['STATE'])) {
                 if ($arFields['PROPERTY_VALUES']['STATE'] === 'Болеет') {
                     $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 3;
                 }
@@ -114,9 +117,9 @@ class IblockEventsHandlers
      */
     public static function OnAfterAbsenceUpdateHandler(&$arFields)
     {
-        if ($arFields["IBLOCK_ID"]==1 && intval($arFields["ID"]) > 0) {
+        if ($arFields["IBLOCK_ID"] == 1 && intval($arFields["ID"]) > 0) {
             $log = date('d.m.Y H:i:s') . ' Изменение в ИБ График отсутствия  ' . print_r($arFields, true) . PHP_EOL;
-           // file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAbsence.txt", $log, FILE_APPEND);
+            // file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAbsence.txt", $log, FILE_APPEND);
         } else {
             // Если произошла ошибка, логируем текст ошибки из RESULT_MESSAGE
             $errorText = $arFields["RESULT_MESSAGE"] ?? "Неизвестная ошибка";
@@ -135,7 +138,7 @@ class IblockEventsHandlers
         $iblockCode = IblockHelpers::getIBlockCodeById($arFields['IBLOCK_ID']);
         $propertyId = IblockHelpers::getPropertyIdByCode('sotrudniki', 'COLUMN33');
         $propertyIdColumn34 = IblockHelpers::getPropertyIdByCode('sotrudniki', 'COLUMN34');
-        $userEmail=$arFields['CODE'];
+        $userEmail = $arFields['CODE'];
 
         if ($iblockCode === 'sotrudniki') {
 
@@ -160,7 +163,7 @@ class IblockEventsHandlers
         // Новое значение для свойства COLUMN33
         $newValue = $summa;
 
-        $totalPrise=RS::getTotalScores('sotrudniki', $userEmail);
+        $totalPrise = RS::getTotalScores('sotrudniki', $userEmail);
         // Устанавливаем значение свойства
         /*\CIBlockElement::SetPropertyValuesEx(
             $elementId,
@@ -196,9 +199,9 @@ class IblockEventsHandlers
             //$interlabsSignscoresPropsList = IblockHelpers::getPropsListIblock('interlabs.signscores');
 
 
-           /* $log = date('Y-m-d H:i:s') . ' interlabs.feedbackform ' . print_r($arFields, true);
-            file_put_contents(__DIR__ . '/log.txt', $log . PHP_EOL, FILE_APPEND);
-            \Bitrix\Main\Diag\Debug::dumpToFile($log, 'interlabs.feedbackform' . date('d-m-Y; H:i:s'));*/
+            /* $log = date('Y-m-d H:i:s') . ' interlabs.feedbackform ' . print_r($arFields, true);
+             file_put_contents(__DIR__ . '/log.txt', $log . PHP_EOL, FILE_APPEND);
+             \Bitrix\Main\Diag\Debug::dumpToFile($log, 'interlabs.feedbackform' . date('d-m-Y; H:i:s'));*/
 
         }
 
