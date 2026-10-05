@@ -20,7 +20,7 @@ class IblockEventsHandlers
     public static function OnBeforeAbsenceAddHandler(&$arFields)
     {
         if ($arFields["IBLOCK_ID"] == 1) {
-            $log = date('d.m.Y H:i:s') . ' Before Добавление в ИБ График отсутствия  ' . print_r($arFields, true) . PHP_EOL;
+            $log = date('d.m.Y H:i:s') . ' Before Добавление в ИБ График отсутствия  ' . print_r($arFields['SEARCHABLE_CONTENT'], true) . PHP_EOL;
             file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/addAbsence.txt", $log, FILE_APPEND);
 
             if (isset($arFields['PROPERTY_VALUES']['STATE'])) {
@@ -93,19 +93,30 @@ class IblockEventsHandlers
     public static function OnBeforeAbsenceUpdateHandler(&$arFields)
     {
         if ($arFields["IBLOCK_ID"] == 1) {
-            $log = date('d.m.Y H:i:s') . ' Before Изменение  в ИБ График отсутствия  ' . print_r($arFields, true) . PHP_EOL;
+            $log = date('d.m.Y H:i:s') . ' Before Изменение  в ИБ График отсутствия  ' . print_r($arFields['SEARCHABLE_CONTENT'], true) . PHP_EOL;
             file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/UpdateAbsence.txt", $log, FILE_APPEND);
 
             if (isset($arFields['PROPERTY_VALUES']['STATE'])) {
+
                 if ($arFields['PROPERTY_VALUES']['STATE'] === 'Отпуск за свой счет') {
                     $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 5;
                 }
                 if ($arFields['PROPERTY_VALUES']['STATE'] === 'В отпуске без сохранения зарплаты') {
                     $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 5;
                 }
-            }
+                if ($arFields['PROPERTY_VALUES']['STATE'] === 'Дополнительные выходные дни неоплачиваемые') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 113;
+                }
+                if ($arFields['PROPERTY_VALUES']['STATE'] === 'Отсутствие с сохранением оплаты') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 1;// донорские дни
+                }
+                /*if ($arFields['PROPERTY_VALUES']['STATE'] === 'Отсутствие с сохранением оплаты') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 1;// Обучение
+                }*/
+                if ($arFields['PROPERTY_VALUES']['STATE'] === 'Дополнительный отпуск') {
+                    $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 1;
+                }
 
-            if (isset($arFields['PROPERTY_VALUES']['STATE'])) {
                 if ($arFields['PROPERTY_VALUES']['STATE'] === 'Болеет') {
                     $arFields['PROPERTY_VALUES']['ABSENCE_TYPE'] = 3;
                 }
