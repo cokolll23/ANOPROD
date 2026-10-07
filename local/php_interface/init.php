@@ -176,3 +176,7 @@ $eventManager->addEventHandler("iblock", "OnBeforeIBlockElementAdd", ['Lab\Event
 //$eventManager->addEventHandler("iblock", "OnAfterIBlockElementAdd", ['Lab\EventsHandlers\IblockEventsHandlers', 'OnAfterAbsenceAddHandler']);
 // todo логирование Проверить какие данные идут из /upload/1c_intranet  IB График отсутствий id=1 CODE = "absence" Обработчик события обновления элемента (OnAfterIBlockElementUpdate)
 $eventManager->addEventHandler("iblock", "OnBeforeIBlockElementUpdate", ['Lab\EventsHandlers\IblockEventsHandlers', 'OnBeforeAbsenceUpdateHandler']);
+
+// отправка емеил пользователям при начислении  М баллов
+AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", ["Lab\EventsHandlers\SotrudnikiUpdateHandler", "onBeforeUpdate"]);
+AddEventHandler("iblock", "OnAfterIBlockElementUpdate", ["Lab\EventsHandlers\SotrudnikiUpdateHandler", "onAfterUpdate"]);

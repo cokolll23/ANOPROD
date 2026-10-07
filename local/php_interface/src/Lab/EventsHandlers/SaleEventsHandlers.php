@@ -97,6 +97,8 @@ class SaleEventsHandlers
     // todo  при отмене заказа возврат покупателю баллов и товарам из заказа кол-ва
     public static function OnSaleOrderSavedHandler1(\Bitrix\Main\Event $event) {
         $order = $event->getParameter("ENTITY");
+
+
         if ($order->isCanceled() && $order->getField("STATUS_ID") != "D") {
             $order->setField("STATUS_ID", "D");
 
