@@ -97,7 +97,70 @@ class SaleEventsHandlers
     // todo  при отмене заказа возврат покупателю баллов и товарам из заказа кол-ва
     public static function OnSaleOrderSavedHandler1(\Bitrix\Main\Event $event) {
         $order = $event->getParameter("ENTITY");
+        $STATUS_ID = $order->getField("STATUS_ID");// N- Принят F- Выполнен
 
+        if ($STATUS_ID == 'N' || $STATUS_ID == 'F') {
+
+            // добавление заказа и емеил  покупателю
+            $orderId = $order->getId();
+            $price = $order->getPrice();
+            $currency = $order->getCurrency();
+
+            $properties = $order->getPropertyCollection();
+
+            $nameProperty = $properties->getPayerName();
+            $emailProperty = $properties->getUserEmail();
+            $phoneProperty = $properties->getPhone();
+
+            $buyer = [
+                'USER_ID' => $order->getUserId(),
+                'NAME' => $nameProperty ? $nameProperty->getValue() : null,
+                'EMAIL' => $emailProperty ? $emailProperty->getValue() : null,
+                'PHONE' => $phoneProperty ? $phoneProperty->getValue() : null,
+                '$orderId' => $orderId ? $orderId : null,
+                '$price' => $price ? $price : null,
+                '$currency' => $currency ? $currency : null,
+            ];
+
+            $subject = "=?UTF-8?B?" . base64_encode("Магазин бонусов форма Запись М-баллов") . "?=";
+
+            $to = $buyer['EMAIL'];
+
+            if ($STATUS_ID == 'N') {
+                $strAction = 'принят';
+                $orderLink = 'Перейти к заказам https://corp-portal.welcome.moscow/shop-bonus/personal/orders/';
+            }
+            if ($STATUS_ID == 'F') {
+                $strAction = 'выполнен';
+                $orderLink = '';
+            }
+            $message = <<<HTML
+
+Письмо из магазина бонусов
+Здравствуйте, {$buyer['NAME']} 
+Ваш заказ № {$buyer['$orderId']}  {$strAction}.
+Сумма заказа: {$buyer['$price']} 
+Спасибо за покупку!
+
+HTML;
+
+            $headers = [
+                'MIME-Version: 1.0',
+                'Content-type: text/html; charset=utf-8',
+                'From: Магазин бонусов <ya@example.com>',
+                'Reply-To: ответ@example.com',
+                'X-Mailer: PHP/' . phpversion()
+            ];
+            if (mail($to, $subject, $message)) {
+                echo "<h2 style='color: green;'>Письмо отправлено администратору</h2>";
+            } else {
+                echo "Ошибка отправки";
+            }
+
+            //$log = date('Y-m-d H:i:s') . ' OnAfterIBlockElementUpdateHandler ' . print_r($buyer, true);
+            $log = date('Y-m-d H:i:s') . ' OnAfterIBlockElementUpdateHandler ' . $to.'--'.$message;
+            file_put_contents($_SERVER["DOCUMENT_ROOT"] . '/log.txt', $log . PHP_EOL, FILE_APPEND);
+        }
 
         if ($order->isCanceled() && $order->getField("STATUS_ID") != "D") {
             $order->setField("STATUS_ID", "D");
