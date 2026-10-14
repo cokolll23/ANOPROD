@@ -2017,7 +2017,7 @@ $curUser = $USER->GetID();
                                 <p>Заместитель генерального директора по региональному взаимодействию</p>
                             </a>
 
-                            <a href="https://corp-portal.welcome.moscow/company/personal/user/79/"
+                           <!-- <a href="https://corp-portal.welcome.moscow/company/personal/user/79/"
                                class="team-card team-card--text">
                                 <h3>Молочкова Наталья Александровна</h3>
                                 <p>Заместитель генерального директора по международному сотрудничеству и общегородским
@@ -2027,6 +2027,10 @@ $curUser = $USER->GetID();
                             <a href="https://corp-portal.welcome.moscow/company/personal/user/79/"
                                class="team-card team-card--photo">
                                 <img src="imgs/molochrjva.png" alt="Молочкова Наталья Александровна">
+                            </a>-->
+                            <a href="https://corp-portal.welcome.moscow/company/personal/user/1185/"
+                               class="team-card team-card--photo">
+                                <img src="imgs/kalacheva.png" alt="Калачева Мария Александровна">
                             </a>
 
                             <a href="https://corp-portal.welcome.moscow/company/personal/user/1185/"
@@ -2035,10 +2039,7 @@ $curUser = $USER->GetID();
                                 <p>Заместитель генерального директора по развитию и реализации специальных проектов</p>
                             </a>
 
-                            <a href="https://corp-portal.welcome.moscow/company/personal/user/1185/"
-                               class="team-card team-card--photo">
-                                <img src="imgs/kalacheva.png" alt="Калачева Мария Александровна">
-                            </a>
+
 
                             <a href="https://corp-portal.welcome.moscow/company/personal/user/30/"
                                class="team-card team-card--photo">
