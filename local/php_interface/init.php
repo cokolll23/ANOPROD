@@ -180,3 +180,5 @@ $eventManager->addEventHandler("iblock", "OnBeforeIBlockElementUpdate", ['Lab\Ev
 // отправка емеил пользователям при начислении  М баллов
 AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", ["Lab\EventsHandlers\SotrudnikiUpdateHandler", "onBeforeUpdate"]);
 AddEventHandler("iblock", "OnAfterIBlockElementUpdate", ["Lab\EventsHandlers\SotrudnikiUpdateHandler", "onAfterUpdate"]);
+
+

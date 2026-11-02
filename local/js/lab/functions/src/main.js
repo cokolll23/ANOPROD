@@ -56,6 +56,43 @@ BX.ready(function (e) {
 
     });
 
+    /*document.addEventListener('click', function(event) {
+        // Проверяем, что клик был по ссылке
+        const link = event.target.closest('a');
+
+        if (!link) return;
+
+        // Проверяем, что href содержит /company/
+        if (!link.href.includes('/company/')) return;
+
+        // Проверяем, что ссылка находится внутри div с нужным background-image
+        const parentDiv = link.closest('div[style*="background-image"]');
+
+        if (!parentDiv) return;
+
+        // Проверяем конкретный background-image
+        const style = parentDiv.getAttribute('style');
+        if (style && style.includes('url("/upload/iblock/c03/onin1dafr65cjp0a826m25k96zocime1/Frame 100.png")')) {
+            console.log('Кнопка:', link);
+        }
+    });*/
+    //q-btn q-btn-item non-selectable no-outline q-btn--unelevated q-btn--rectangle
+    //
+    // q-btn--rounded q-btn--actionable q-focusable q-hoverable q-btn--no-uppercase kt-btn q-btn--primary-theme
+
+    $('body').on('click', '.kt-widget-wrapper__content a[href="https://corp-portal.welcome.moscow/company/"]', function (e) {
+
+        e.preventDefault();
+        if($(this).attr('href')=='https://corp-portal.welcome.moscow/company/'){
+            console.log($(this));
+            const arr=$('div.main-buttons-item.top-menu-menu_office').find('a').attr('href');
+            window.location.href = arr;
+        }
+
+       // $('a[href*="corp-portal.welcome.moscow/company/"]').click();
+
+    });
+
     /* $('ul.menu-items li').each(function (e) {
          if ($(this).attr('id') == 'bx_left_menu_2301492049') {
              $(this).addClass( 'menu-ano-life');
