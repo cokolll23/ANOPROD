@@ -8,6 +8,9 @@
           <mappings>
             <mapping deploy="/home/bitrix/www" local="$PROJECT_DIR$" web="/" />
           </mappings>
+          <excludedPaths>
+            <excludedPath path="/home/bitrix/www/upload/user_months.json" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

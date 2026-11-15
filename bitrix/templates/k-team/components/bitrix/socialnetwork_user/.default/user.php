@@ -297,7 +297,7 @@ HTML
                 align-items: center;
                 padding: 40px 48px;
                 margin-bottom: 20px;
-
+                font-family:"IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif ;
                 /* Подложка: фоновый цвет + изображение со звёздами справа */
                 background-color: #ffffff;
                 background-image: url('/local/imgs/marathon/mar.png'); /* Путь к вашему фону/картинке со звёздами */
@@ -2330,7 +2330,6 @@ HTML
 
                         $directorateKeywords = ['Сметно-договорное управление', 'Управление сопровождения контрактов', 'Правовое управление', 'Управление документационного обеспечения и контроля', 'Управление закупок', 'Административное управление', 'Генеральный директор', 'Дирекция', 'Комитет', 'Советник', 'Заместитель директора', 'Директор дивизиона', 'заместитель генерального директора'];
                         $managementKeywords = ['Управление', 'Группа'];
-
                         $foundDirectorate = null;
                         $foundManagement = null;
                         $foundGroup = null;
@@ -2413,6 +2412,11 @@ HTML
                             $allowedDepartmentIds = array_diff($allSectionIds1, [$arDepartments[0]]);
                         } else {
                             $allowedDepartmentIds = $resultIds;
+                        }
+
+                        // На всякий случай гарантируем 299 в разрешённых
+                        if (!in_array(299, $allowedDepartmentIds, true)) {
+                            $allowedDepartmentIds[] = 299;
                         }
 
                         // Если нужен именно массив без корневого:
@@ -3607,5 +3611,5 @@ HTML
     <?php endif; ?>
 
     <?php
-}
-
+} ?>
+<?php require($_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/includes/listok/form.php"); ?>
